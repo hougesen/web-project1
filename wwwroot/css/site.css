@@ -1,71 +1,54 @@
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+body{
+    padding:0;
+    margin:0;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+.page-wrapper {
+    width: 100vw;
+    display: flex;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.sidebar {
+    width: 15em;
+    max-width: 35vw;
+    background-color: white;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -13px 0 20px 5px #555;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.sidebar i {
+    padding-left:10px;
+    padding-right:10px;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.sidebar .arrow-align-right {
+    display:flex;
+    justify-content:space-between;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.sidebar a.active {
+    color: #00904A;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.sidebar a:hover:not(.active) {
+    color: #00904A;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+.render-body {
+    padding-left:4vw;
 }

@@ -25,34 +25,6 @@ namespace AAOAdmin.Controllers
 
         public IActionResult Index()
         {
-            // Insert data 
-            Country country = new Country() {
-                CountryName="USA"
-            };
-
-            _db.Add(country);
-
-            _db.SaveChanges();
-
-
-
-            // Select data 
-            User u1 = _db.Users.FirstOrDefault(myvar => myvar.UserId == 2);
-
-            if (u1 == null)
-            {
-                throw new Exception("No user found");
-            }
-
-
-            u1.UserFullName = "John Mogensen";
-
-            _db.Update(u1);
-
-            _db.SaveChanges();
-
-       
-
 
 
             return View();
@@ -64,6 +36,11 @@ namespace AAOAdmin.Controllers
         }
 
         public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Sidenav()
         {
             return View();
         }
