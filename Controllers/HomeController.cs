@@ -38,7 +38,7 @@ namespace AAOAdmin.Controllers
             return View();
         }
 
-        public IActionResult Drivers()
+        public IActionResult Sidenav()
         {
             return View();
         }
