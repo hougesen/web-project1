@@ -7,6 +7,11 @@ namespace AAOAdmin.Models
 {
     public partial class User
     {
+        public User()
+        {
+            Routes = new HashSet<Route>();
+        }
+
         public int UserId { get; set; }
         public int? UserTypeId { get; set; }
         public string UserEmail { get; set; }
@@ -16,5 +21,6 @@ namespace AAOAdmin.Models
 
         public virtual UserType UserType { get; set; }
         public virtual DriverInformation DriverInformation { get; set; }
+        public virtual ICollection<Route> Routes { get; set; }
     }
 }

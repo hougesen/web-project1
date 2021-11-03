@@ -10,6 +10,8 @@ namespace AAOAdmin.Models
         public Location()
         {
             DriverInformations = new HashSet<DriverInformation>();
+            RouteRouteEndLocations = new HashSet<Route>();
+            RouteRouteStartLocations = new HashSet<Route>();
         }
 
         public int LocationId { get; set; }
@@ -19,5 +21,7 @@ namespace AAOAdmin.Models
 
         public virtual City City { get; set; }
         public virtual ICollection<DriverInformation> DriverInformations { get; set; }
+        public virtual ICollection<Route> RouteRouteEndLocations { get; set; }
+        public virtual ICollection<Route> RouteRouteStartLocations { get; set; }
     }
 }

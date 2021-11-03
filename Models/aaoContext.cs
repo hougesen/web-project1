@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -6,19 +6,20 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace AAOAdmin.Models
 {
-    public partial class aaoContext : DbContext
+    public partial class AAOContext : DbContext
     {
-        public aaoContext()
+        public AAOContext()
         {
         }
 
-        public aaoContext(DbContextOptions<aaoContext> options)
+        public AAOContext(DbContextOptions<AAOContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<DriverInformation> DriverInformations { get; set; }
         public virtual DbSet<Licence> Licences { get; set; }
         public virtual DbSet<LicenceType> LicenceTypes { get; set; }
@@ -50,13 +51,34 @@ namespace AAOAdmin.Models
                 entity.HasOne(d => d.Country)
                     .WithMany(p => p.Cities)
                     .HasForeignKey(d => d.CountryId)
-                    .HasConstraintName("FK__Cities__CountryI__3E52440B");
+                    .HasConstraintName("FK__Cities__CountryI__2E1BDC42");
             });
 
             modelBuilder.Entity<Country>(entity =>
             {
+                entity.HasIndex(e => e.CountryName, "UQ__Countrie__E056F201D85A6EE6")
+                    .IsUnique();
+
                 entity.Property(e => e.CountryName)
                     .HasMaxLength(3)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Department>(entity =>
+            {
+                entity.HasIndex(e => e.DepartmentName, "UQ__Departme__D949CC34B56F119D")
+                    .IsUnique();
+
+                entity.Property(e => e.DepartmentContactNumber)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DepartmentEmail)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DepartmentName)
+                    .HasMaxLength(255)
                     .IsUnicode(false);
             });
 
@@ -64,16 +86,16 @@ namespace AAOAdmin.Models
             {
                 entity.ToTable("DriverInformation");
 
-                entity.HasIndex(e => e.UserId, "UQ__DriverIn__1788CC4DE8C8E873")
+                entity.HasIndex(e => e.UserId, "UQ__DriverIn__1788CC4D24004C50")
                     .IsUnique();
 
-                entity.HasIndex(e => e.LorryLicenceId, "UQ__DriverIn__1B915FF2FAE83AB6")
+                entity.HasIndex(e => e.LorryLicenceId, "UQ__DriverIn__1B915FF255047D4A")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Eucertificate, "UQ__DriverIn__48E89476C93A12B6")
+                entity.HasIndex(e => e.Eucertificate, "UQ__DriverIn__48E894762F02CE10")
                     .IsUnique();
 
-                entity.HasIndex(e => e.DriverLicenceId, "UQ__DriverIn__9A7F9B9422C58C7B")
+                entity.HasIndex(e => e.DriverLicenceId, "UQ__DriverIn__9A7F9B942059EEF0")
                     .IsUnique();
 
                 entity.Property(e => e.Eucertificate).HasColumnName("EUCertificate");
@@ -81,27 +103,27 @@ namespace AAOAdmin.Models
                 entity.HasOne(d => d.DriverLicence)
                     .WithOne(p => p.DriverInformationDriverLicence)
                     .HasForeignKey<DriverInformation>(d => d.DriverLicenceId)
-                    .HasConstraintName("FK__DriverInf__Drive__4E88ABD4");
+                    .HasConstraintName("FK__DriverInf__Drive__3F466844");
 
                 entity.HasOne(d => d.EucertificateNavigation)
                     .WithOne(p => p.DriverInformationEucertificateNavigation)
                     .HasForeignKey<DriverInformation>(d => d.Eucertificate)
-                    .HasConstraintName("FK__DriverInf__EUCer__5070F446");
+                    .HasConstraintName("FK__DriverInf__EUCer__412EB0B6");
 
                 entity.HasOne(d => d.Location)
                     .WithMany(p => p.DriverInformations)
                     .HasForeignKey(d => d.LocationId)
-                    .HasConstraintName("FK__DriverInf__Locat__4D94879B");
+                    .HasConstraintName("FK__DriverInf__Locat__3E52440B");
 
                 entity.HasOne(d => d.LorryLicence)
                     .WithOne(p => p.DriverInformationLorryLicence)
                     .HasForeignKey<DriverInformation>(d => d.LorryLicenceId)
-                    .HasConstraintName("FK__DriverInf__Lorry__4F7CD00D");
+                    .HasConstraintName("FK__DriverInf__Lorry__403A8C7D");
 
                 entity.HasOne(d => d.User)
                     .WithOne(p => p.DriverInformation)
                     .HasForeignKey<DriverInformation>(d => d.UserId)
-                    .HasConstraintName("FK__DriverInf__UserI__4CA06362");
+                    .HasConstraintName("FK__DriverInf__UserI__3D5E1FD2");
             });
 
             modelBuilder.Entity<Licence>(entity =>
@@ -115,13 +137,16 @@ namespace AAOAdmin.Models
                 entity.HasOne(d => d.LicenceType)
                     .WithMany(p => p.Licences)
                     .HasForeignKey(d => d.LicenceTypeId)
-                    .HasConstraintName("FK__Licences__Licenc__45F365D3");
+                    .HasConstraintName("FK__Licences__Licenc__36B12243");
             });
 
             modelBuilder.Entity<LicenceType>(entity =>
             {
+                entity.HasIndex(e => e.LicenceTypeName, "UQ__LicenceT__CFCA78ACB7D080E6")
+                    .IsUnique();
+
                 entity.Property(e => e.LicenceTypeName)
-                    .HasMaxLength(10)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
             });
 
@@ -138,34 +163,58 @@ namespace AAOAdmin.Models
                 entity.HasOne(d => d.City)
                     .WithMany(p => p.Locations)
                     .HasForeignKey(d => d.CityId)
-                    .HasConstraintName("FK__Locations__CityI__412EB0B6");
+                    .HasConstraintName("FK__Locations__CityI__30F848ED");
             });
 
             modelBuilder.Entity<Route>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.RouteDescription).HasColumnType("text");
 
                 entity.Property(e => e.RouteEndDate).HasColumnType("datetime");
 
-                entity.Property(e => e.RouteId).ValueGeneratedOnAdd();
-
                 entity.Property(e => e.RouteStartDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Department)
+                    .WithMany(p => p.Routes)
+                    .HasForeignKey(d => d.DepartmentId)
+                    .HasConstraintName("FK__Routes__Departme__4D94879B");
+
+                entity.HasOne(d => d.Driver)
+                    .WithMany(p => p.Routes)
+                    .HasForeignKey(d => d.DriverId)
+                    .HasConstraintName("FK__Routes__DriverId__49C3F6B7");
+
+                entity.HasOne(d => d.RouteEndLocation)
+                    .WithMany(p => p.RouteRouteEndLocations)
+                    .HasForeignKey(d => d.RouteEndLocationId)
+                    .HasConstraintName("FK__Routes__RouteEnd__4CA06362");
+
+                entity.HasOne(d => d.RouteStartLocation)
+                    .WithMany(p => p.RouteRouteStartLocations)
+                    .HasForeignKey(d => d.RouteStartLocationId)
+                    .HasConstraintName("FK__Routes__RouteSta__4BAC3F29");
+
+                entity.HasOne(d => d.RouteStatus)
+                    .WithMany(p => p.Routes)
+                    .HasForeignKey(d => d.RouteStatusId)
+                    .HasConstraintName("FK__Routes__RouteSta__4AB81AF0");
             });
 
             modelBuilder.Entity<RouteStatus>(entity =>
             {
                 entity.ToTable("RouteStatus");
 
+                entity.HasIndex(e => e.RouteStatusName, "UQ__RouteSta__CC835486B2825A9D")
+                    .IsUnique();
+
                 entity.Property(e => e.RouteStatusName)
-                    .HasMaxLength(10)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.UserEmail, "UQ__Users__08638DF861F71845")
+                entity.HasIndex(e => e.UserEmail, "UQ__Users__08638DF8BC7C1F3D")
                     .IsUnique();
 
                 entity.Property(e => e.UserEmail)
@@ -187,11 +236,14 @@ namespace AAOAdmin.Models
                 entity.HasOne(d => d.UserType)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.UserTypeId)
-                    .HasConstraintName("FK__Users__UserTypeI__398D8EEE");
+                    .HasConstraintName("FK__Users__UserTypeI__286302EC");
             });
 
             modelBuilder.Entity<UserType>(entity =>
             {
+                entity.HasIndex(e => e.UserTypeName, "UQ__UserType__9262CB7107BEDF83")
+                    .IsUnique();
+
                 entity.Property(e => e.UserTypeName)
                     .HasMaxLength(10)
                     .IsUnicode(false);
