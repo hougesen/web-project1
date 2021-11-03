@@ -1,4 +1,4 @@
-﻿using AAOAdmin.Models;
+using AAOAdmin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -24,6 +24,11 @@ namespace AAOAdmin.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
         {
             return View();
         }
