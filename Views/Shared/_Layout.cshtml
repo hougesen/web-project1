@@ -4,40 +4,67 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AAOAdmin</title>
-
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/211c7f6f1f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AAOAdmin</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+
+    <div class="page-wrapper">
+        <div class="sidebar">
+            <img src="~/imagess/AAlogo.png" alt="AAO logo" class="aao-logo" />
+            <h3>Alex Andersen Ølund</h3>
+            <div class="nav-menu">
+                <a href="" class="arrow-align-right">
+                    <span>
+                        <i class="fas fa-chart-line"></i>
+                        Dashboard
+                    </span>
+                    <span><i class="fas fa-angle-right"></i></span>
+                </a>
+
+
+                <a href="#" class="arrow-align-right">
+                    <span>
+                        <i class="fas fa-edit"></i>
+                        Opret tur
+                    </span>
+                    <span><i class="fas fa-angle-right"></i></span>
+                </a>
+
+                <a href="#" class="arrow-align-right">
+                    <span>
+                        <i class="fas fa-route"></i>
+                        Ture
+                    </span>
+                    <span><i class="fas fa-angle-right"></i></span>
+                </a>
+
+                <a href="#" class="arrow-align-right">
+                    <span>
+                        <i class="fas fa-database"></i>
+                        Chauffører
+                    </span>
+                    <span><i class="fas fa-angle-right"></i></span>
+                </a>
+
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+        <div style="width: 100%;">
+
+            <div id="topnav">   
+                <div id="nav-login">Login <i class="fa fa-fw fa-user"></i></div>
+            </div>
+
+            <div class="render-body">
+                <main>
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            
-        </div>
-    </footer>
+
+    <footer></footer>
 </body>
 </html>
