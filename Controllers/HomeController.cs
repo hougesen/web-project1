@@ -32,7 +32,6 @@ namespace AAOAdmin.Controllers
 
             _db.Add(country);
 
-            _db.SaveChanges();
 
 
 
