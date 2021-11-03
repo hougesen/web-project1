@@ -11,7 +11,7 @@ body{
 }
 
 .sidebar {
-    width: 15em;
+    width: 18em;
     max-width: 35vw;
     background-color: white;
     height: 100%;
@@ -21,6 +21,23 @@ body{
     box-shadow: -13px 0 20px 5px #555;
 }
 
+.sidebar .nav-menu{
+    padding-top:10px;
+}
+
+.sidebar h3 {
+    font-family: 'Raleway', sans-serif;
+    text-align:center;
+    font-weight:bolder;
+}
+
+.sidebar .aao-logo{
+    width: 8em;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 6vh;
+}
 
 .sidebar a {
     display: block;
@@ -53,18 +70,22 @@ body{
     padding-left:4vw;
 }
 
-
-
-
-
-body h1 {
-    text-align: center;
+#topnav {
+    background-color: #00904A;
     width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
-body p {
-    text-align: center;
+#topnav #nav-login{
+    color:white;
+    font-size: 20px;
+    padding-right: 2vw;
+
 }
+
 
 p.companyName {
     margin: 0px;
