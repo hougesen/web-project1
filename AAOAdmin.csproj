@@ -20,6 +20,10 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\lib\" />
+    <Folder Include="wwwroot\imagess\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\imagess\" />
+  </ItemGroup>
 </Project>

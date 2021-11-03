@@ -52,3 +52,106 @@ body{
 .render-body {
     padding-left:4vw;
 }
+
+
+
+
+
+body h1 {
+    text-align: center;
+    width: 100%;
+}
+
+body p {
+    text-align: center;
+}
+
+p.companyName {
+    margin: 0px;
+    font-size: 26px;
+    margin-bottom: -5px;
+}
+
+p.appName {
+    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+body .formen {
+    text-align: center;
+    width: 33%;
+    height: 250px;
+    margin: auto;
+    border-radius: 3px;
+    padding: 12px 50px;
+}
+
+body label.form-navn {
+    text-align: left;
+    width: 100%;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+body label.form-kode {
+    text-align: left;
+    width: 100%;
+    font-size: 17px;
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+
+/* FORM */
+body input#fname, input#lname {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #00000069;
+}
+
+input#fname:active {
+    border: 1px solid #009149;
+}
+
+
+/* KNAPPER */
+input.knap1 {
+    display: inline;
+    float: left;
+    background: #02904a;
+    border-radius: 3px;
+    padding: 5px 15px;
+    width: 35%;
+    color: white;
+    border: 0px;
+    box-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
+}
+
+    input.knap1:hover {
+        opacity: 0.7;
+        transition: 0.3s;
+    }
+
+input.knap2 {
+    display: inline;
+    float: right;
+    background: #b4b2b2;
+    border-radius: 3px;
+    width: 35%;
+    padding: 5px 15px;
+    color: white;
+    border: 0px;
+    box-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
+}
+
+    input.knap2:hover {
+        opacity: 0.7;
+        transition: 0.3s;
+    }
+
+
+/* LOGO */
+.containeren img {
+    width: 250px;
+}
