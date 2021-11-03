@@ -25,13 +25,11 @@ namespace AAOAdmin.Controllers
 
         public IActionResult Index()
         {
-<<<<<<< HEAD
+
            return View();
-=======
 
 
             return View();
->>>>>>> fa5e17cb6cc8ba3526326c6ab2f5d465879c01bb
         }
 
         public IActionResult Privacy()

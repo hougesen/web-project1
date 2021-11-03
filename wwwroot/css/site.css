@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
-<<<<<<< HEAD
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -71,7 +71,79 @@ body {
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
-=======
+
+    body{
+    padding:0;
+    margin:0;
+}
+
+.page-wrapper {
+    width: 100vw;
+    display: flex;
+}
+
+.sidebar {
+    width: 18em;
+    max-width: 35vw;
+    background-color: white;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -13px 0 20px 5px #555;
+}
+
+.sidebar .nav-menu{
+    padding-top:10px;
+}
+
+.sidebar h3 {
+    font-family: 'Raleway', sans-serif;
+    text-align:center;
+    font-weight:bolder;
+}
+
+.sidebar .aao-logo{
+    width: 8em;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 6vh;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+}
+
+.sidebar i {
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.sidebar .arrow-align-right {
+    display:flex;
+    justify-content:space-between;
+}
+
+.sidebar a.active {
+    color: #00904A;
+}
+
+.sidebar a:hover:not(.active) {
+    color: #00904A;
+}
+
+.render-body {
+    padding-left:4vw;
+}
+
+
+
 body{
     padding:0;
     margin:0;
@@ -132,7 +204,6 @@ body{
 
 .sidebar a.active {
     color: #00904A;
->>>>>>> fa5e17cb6cc8ba3526326c6ab2f5d465879c01bb
 }
 
 .sidebar a:hover:not(.active) {
@@ -143,13 +214,6 @@ body{
     padding-left:4vw;
 }
 
-<<<<<<< HEAD
-
-
-
-
-
-=======
 #topnav {
     background-color: #00904A;
     width: 100%;
@@ -182,6 +246,15 @@ body{
     .containeren img.logo {
         width: 300px;
     }
+
+
+#topnav #nav-login{
+    color:white;
+    font-size: 20px;
+    padding-right: 2vw;
+
+}
+
 
 p.companyName {
     margin: 0px;
