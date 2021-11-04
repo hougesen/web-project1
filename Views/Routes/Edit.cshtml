@@ -1,0 +1,75 @@
+@model AAOAdmin.Models.Route
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Route</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RouteId" />
+            <div class="form-group">
+                <label asp-for="RouteDescription" class="control-label"></label>
+                <input asp-for="RouteDescription" class="form-control" />
+                <span asp-validation-for="RouteDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteStartDate" class="control-label"></label>
+                <input asp-for="RouteStartDate" class="form-control" />
+                <span asp-validation-for="RouteStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteEndDate" class="control-label"></label>
+                <input asp-for="RouteEndDate" class="form-control" />
+                <span asp-validation-for="RouteEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteStartLocationId" class="control-label"></label>
+                <select asp-for="RouteStartLocationId" class="form-control" asp-items="ViewBag.RouteStartLocationId"></select>
+                <span asp-validation-for="RouteStartLocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteEndLocationId" class="control-label"></label>
+                <select asp-for="RouteEndLocationId" class="form-control" asp-items="ViewBag.RouteEndLocationId"></select>
+                <span asp-validation-for="RouteEndLocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteHighPriority" class="control-label"></label>
+                <input asp-for="RouteHighPriority" class="form-control" />
+                <span asp-validation-for="RouteHighPriority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteStatusId" class="control-label"></label>
+                <select asp-for="RouteStatusId" class="form-control" asp-items="ViewBag.RouteStatusId"></select>
+                <span asp-validation-for="RouteStatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverId" class="control-label"></label>
+                <select asp-for="DriverId" class="form-control" asp-items="ViewBag.DriverId"></select>
+                <span asp-validation-for="DriverId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteEstTime" class="control-label"></label>
+                <input asp-for="RouteEstTime" class="form-control" />
+                <span asp-validation-for="RouteEstTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
