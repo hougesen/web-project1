@@ -79,23 +79,25 @@
     }
 
     input.knap1 {
-        padding: 7px 30px;
+        padding: 7px 25px;
         border-radius: 3px;
         float: left;
         border: 0px;
         background: #009149;
         color: white;
         font-size: 15px;
+        box-shadow: 0 0 3px rgb(0 0 0 / 15%);
     }
 
     input.knap2 {
-        padding: 7px 30px;
+        padding: 7px 25px;
         float: right;
         border-radius: 3px;
         border: 0px;
         background-color: #b4b2b2;
         color: white;
         font-size: 15px;
+        box-shadow: 0 0 3px rgb(0 0 0 / 15%);
     }
 
     input.knap1:hover {
@@ -159,11 +161,11 @@
 
 
     <div class="formen">
-        <form action="/action_page.php">
+        <form method="post" action="/action_page.php">
             <label class="form-navn" for="fname">Brugernavn</label>
             <input class="inputfelt" type="text" id="fname" name="fname" />
             <label class="form-kode" for="lname">Adgangskode</label>
-            <input class="inputfelt" type="text" id="lname" name="lname" />
+            <input class="inputfelt" type="password" id="lname" name="lname" />
             <input class="knap1" type="submit" value="Log ind">
             <input class="knap2" type="submit" value="Hjælp">
         </form>
