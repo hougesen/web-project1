@@ -1,5 +1,3 @@
-using System;
-
 namespace AAOAdmin.Models
 {
     public class ErrorViewModel

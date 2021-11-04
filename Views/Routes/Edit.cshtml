@@ -4,10 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Rediger tur</h1>
 
-<h4>Route</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -30,12 +28,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="RouteStartLocationId" class="control-label"></label>
-                <select asp-for="RouteStartLocationId" class="form-control" asp-items="ViewBag.RouteStartLocationId"></select>
+                <select asp-for="RouteStartLocationId" class="form-control"
+                    asp-items="ViewBag.RouteStartLocationId"></select>
                 <span asp-validation-for="RouteStartLocationId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="RouteEndLocationId" class="control-label"></label>
-                <select asp-for="RouteEndLocationId" class="form-control" asp-items="ViewBag.RouteEndLocationId"></select>
+                <select asp-for="RouteEndLocationId" class="form-control"
+                    asp-items="ViewBag.RouteEndLocationId"></select>
                 <span asp-validation-for="RouteEndLocationId" class="text-danger"></span>
             </div>
             <div class="form-group">

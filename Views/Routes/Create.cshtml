@@ -1,6 +1,7 @@
 @model AAOAdmin.Models.Route
 
-@{ ViewData["Title"] = "Opret tur";
+@{
+    ViewData["Title"] = "Opret tur";
     Layout = "_Layout";
 }
 
@@ -9,92 +10,113 @@
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 2fr;
+        gap: 1rem;
     }
+
+    .form-group {}
 
     .form-description {
         width: 100%;
     }
 
     label {
-        display:block;
+        display: block;
+    }
+
+    input,
+    select,
+    textarea {
+        border: 1px solid #005140;
+        border-radius: 2px;
+        width: 100%;
+        padding: 0.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    button {
+        background: #00904A;
+        border-radius: 5px;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        color: #fff;
     }
 </style>
 
 <h1>Opret tur</h1>
 
 <div>
-    <div class="col-md-4" style="background-color: red">
+    <div>
         <form asp-action="Create" class="form">
-            <div style="width:100%">
+            <div style="width: 100%">
                 <div asp-validation-summary="ModelOnly"></div>
 
-                <div>
+                <div class="form-group">
                     <label asp-for="RouteStartDate">Startdato</label>
                     <input asp-for="RouteStartDate" />
                     <span asp-validation-for="RouteStartDate"></span>
                 </div>
 
-                <div>
+                <div class="form-group">
                     <label asp-for="RouteEndDate">Slutdato</label>
                     <input asp-for="RouteEndDate" />
                     <span asp-validation-for="RouteEndDate"></span>
                 </div>
 
-                <div>
+                <div class="form-group">
                     <label asp-for="RouteStartLocationId">Start lokation</label>
                     <select asp-for="RouteStartLocationId" asp-items="ViewBag.RouteStartLocationId"></select>
                 </div>
 
-                <div>
+                <div class="form-group">
                     <label asp-for="RouteEndLocationId">Slut lokation</label>
                     <select asp-for="RouteEndLocationId" asp-items="ViewBag.RouteEndLocationId"></select>
                 </div>
 
-                <div>
+                <div class="form-group">
                     <label asp-for="RouteHighPriority">Høj prioritet</label>
                     <input asp-for="RouteHighPriority" />
                     <span asp-validation-for="RouteHighPriority"></span>
                 </div>
             </div>
 
-            <div style="width:100%">
-                <div>
-                    <label asp-for="RouteStatusId">Status</label>
-                    <select asp-for="RouteStatusId" asp-items="ViewBag.RouteStatusId"   style="text-transform: capitalize"></select>
+            <div style="width: 100%; display:flex; flex-direction: column">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem">
+                    <div class="form-group">
+                        <label asp-for="RouteStatusId">Status</label>
+                        <select asp-for="RouteStatusId" asp-items="ViewBag.RouteStatusId"
+                            style="text-transform: capitalize"></select>
+                    </div>
+
+                    @*
+                        <div>
+                        <label asp-for="DriverId">Chaffør</label>
+                        <select asp-for="DriverId" asp-items="ViewBag.DriverId"></select>
+                        </div>
+                    *@
+
+                    <div class="form-group">
+                        <label asp-for="DepartmentId">Afdeling</label>
+                        <select asp-for="DepartmentId" asp-items="ViewBag.DepartmentId"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="RouteEstTime">Estimeret tid i timer</label>
+                        <input asp-for="RouteEstTime" />
+                        <span asp-validation-for="RouteEstTime"></span>
+                    </div>
                 </div>
 
-                @*<div>
-                    <label asp-for="DriverId">Chaffør</label>
-                    <select asp-for="DriverId" asp-items="ViewBag.DriverId"></select>
-                </div>*@
-
-                <div>
-                    <label asp-for="DepartmentId">Afdeling</label>
-                    <select asp-for="DepartmentId" asp-items="ViewBag.DepartmentId"></select>
-                </div>
-
-                <div>
-                    <label asp-for="RouteEstTime">Estimeret tid i timer</label>
-                    <input asp-for="RouteEstTime" />
-                    <span asp-validation-for="RouteEstTime"></span>
-                </div>
-
-                <div class="form-description">
+                <div class="form-description form-group">
                     <label asp-for="RouteDescription">Beskrivelse</label>
                     <textarea asp-for="RouteDescription"></textarea>
                     <span asp-validation-for="RouteDescription"></span>
                 </div>
 
-                <div>
-                    <input type="submit" value="Create" />
-                </div>
+                <button type="submit" value="Create" style="margin-left:auto">
+
+                    Opret tur
+                </button>
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-
