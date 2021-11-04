@@ -237,14 +237,3 @@ body{
 
 }
 
-.table {
-    border: 1px solid;
-    width: 100%;
-    border-collapse: collapse;
-}
-
-tr, th, td {
-    border: 1px solid;
-    text-align: left;
-    padding: 8px;
-}
