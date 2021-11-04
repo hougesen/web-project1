@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AAOAdmin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using AAOAdmin.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace AAOAdmin.Controllers
 {

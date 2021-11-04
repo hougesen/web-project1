@@ -1,11 +1,8 @@
 using AAOAdmin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace AAOAdmin.Controllers
 {
@@ -52,7 +49,7 @@ namespace AAOAdmin.Controllers
 
         public User loginToUser(string email, string password)
         {
-            User u1 = _db.Users.Where(myvar => myvar.UserEmail == "mads@mhouge.dk" ).FirstOrDefault<User>();
+            User u1 = _db.Users.Where(myvar => myvar.UserEmail == "mads@mhouge.dk").FirstOrDefault<User>();
 
             return u1;
         }
