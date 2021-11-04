@@ -47,9 +47,8 @@ namespace AAOAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                // DBEntity db = new DBEntity();
                 var user = (from userlist in _db.Users
-                            where userlist.UserEmail == login.UserEmail && userlist.UserPassword == login.UserPassword && userlist.UserId == 1
+                            where userlist.UserEmail == login.UserEmail && userlist.UserPassword == login.UserPassword && userlist.UserTypeId == 1
                             select new
                             {
                                 userlist.UserId,
