@@ -6,14 +6,14 @@
     line-height: 1.6;
 }
 
-    *:before,
-    *:after {
-        margin: 0;
-        padding: 0;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        line-height: 1.6;
-    }
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 1.6;
+}
 
 html {
     scroll-behavior: smooth;

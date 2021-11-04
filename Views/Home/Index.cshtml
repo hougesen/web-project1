@@ -1,30 +1,32 @@
-@{
-    ViewData["Title"] = "Login Page";
-    Layout = "";
-}
+@model AAOAdmin.Models.LoginModel
 
+@{
+  ViewData["Title"] = "Login Page";
+  Layout = "";
+}
 
 <link href="~/css/login.css" rel="stylesheet" />
 
+<div class="logo">
+    <img class="aao-logo" src="imagess/AAlogo.png" />
+</div>
 
+<h2 class="companyName">Alex Andersen</h2>
+<h1 class="appName">Afløser app</h1>
+<div class="login-container">
+    @using (Html.BeginForm()) { @Html.ValidationSummary(true)
 
-<div class="containeren">
+    <div style="margin: auto; display: flex; justify-content: center; flex-direction: column; width: 20%">
+        @Html.LabelFor(model => model.UserEmail) @Html.EditorFor(model => model.UserEmail)
+        <div style="height: 20px">@Html.ValidationMessageFor(model => model.UserEmail)</div>
 
-    <img class="logo" src="imagess/AAlogo.png" />
-    <p class="companyName">Alex Andersen</p>
-    <p class="appName">Afløser app</p>
+        @Html.LabelFor(model => model.UserPassword) @Html.EditorFor(model => model.UserPassword)
+        <div style="height: 20px">@Html.ValidationMessageFor(model => model.UserPassword)</div>
 
-
-    <div class="formen">
-        <form method="post" action="/action_page.php">
-            <label class="form-navn" for="fname">Brugernavn</label>
-            <input class="inputfelt" type="text" id="fname" name="fname" />
-            <label class="form-kode" for="lname">Adgangskode</label>
-            <input class="inputfelt" type="password" id="lname" name="lname" />
-            <input class="knap1" type="submit" value="Log ind">
-            <input class="knap2" type="submit" value="Hjælp">
-        </form>
+        <div style="display: flex">
+            <input class="knap1" type="submit" value="Log ind" />
+            <input class="knap2" type="submit" value="Hjælp" />
+        </div>
     </div>
-
-
+    }
 </div>
