@@ -1,89 +1,41 @@
-﻿@model IEnumerable<AAOAdmin.Models.Route>
+@model IEnumerable<AAOAdmin.Models.Route>
 
 @{
     ViewData["Title"] = "Index";
 }
+<h1>Turer</h1>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RouteDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RouteStartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RouteEndDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RouteHighPriority)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RouteEstTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Department)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Driver)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RouteEndLocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RouteStartLocation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RouteStatus)
-            </th>
+            <th>Startdato</th>
+            <th>Slutdato</th>
+            <th>Varighed</th>
+            <th>Afdeling</th>
+            <th>Start lokation</th>
+            <th>Slut lokation</th>
+            <th>Status</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RouteDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RouteStartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RouteEndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RouteHighPriority)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RouteEstTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.DepartmentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Driver.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RouteEndLocation.LocationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RouteStartLocation.LocationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RouteStatus.RouteStatusId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RouteId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RouteId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RouteId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.RouteStartDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.RouteEndDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.RouteEstTime) timer</td>
+                <td>@Html.DisplayFor(modelItem => item.Department.DepartmentName)</td>
+                <td>@Html.DisplayFor(modelItem => item.RouteStartLocation.LocationAddress)</td>
+                <td>@Html.DisplayFor(modelItem => item.RouteEndLocation.LocationAddress)</td>
+                <td>@Html.DisplayFor(modelItem => item.RouteStatus.RouteStatusName)</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.RouteId">Rediger</a>
+                    @* <a asp-action="Details" asp-route-id="@item.RouteId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.RouteId">Delete</a> *@
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
