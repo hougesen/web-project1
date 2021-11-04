@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
+
 
 namespace AAOAdmin.Controllers
 {
@@ -43,6 +45,38 @@ namespace AAOAdmin.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(LoginModel login)
+        {
+            if (ModelState.IsValid)
+            {
+                // DBEntity db = new DBEntity();
+                var user = (from userlist in _db.Users
+                            where userlist.UserEmail == login.UserEmail && userlist.UserPassword == login.UserPassword && userlist.UserId == 1
+                            select new
+                            {
+                                userlist.UserId,
+                                userlist.UserEmail
+                            }).ToList();
+                if (user.FirstOrDefault() != null)
+                {
+                    /* Session["UserEmail"] = user.FirstOrDefault().UserEmail;
+                     Session["UserID"] = user.FirstOrDefault().UserId;*/
+                    return Redirect("/dashboard");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid login credentials.");
+                }
+            }
+            return View(login);
+        }
+
+        public ActionResult WelcomePage()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -50,12 +84,6 @@ namespace AAOAdmin.Controllers
         }
 
 
-        public User loginToUser(string email, string password)
-        {
-            User u1 = _db.Users.Where(myvar => myvar.UserEmail == "mads@mhouge.dk" ).FirstOrDefault<User>();
-
-            return u1;
-        }
     }
 }
 
