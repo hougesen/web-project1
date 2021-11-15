@@ -86,7 +86,7 @@ CREATE TABLE Routes (
     RouteEndLocationId INT,
     RouteHighPriority BIT,
     RouteStatusId INT,
-    DriverId INT,
+    DriverId INT NULL,
     DepartmentId INT,
     RouteEstTime INT,
     PRIMARY KEY (RouteId),
