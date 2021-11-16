@@ -96,6 +96,24 @@ CREATE TABLE Routes (
     FOREIGN KEY (RouteEndLocationId) REFERENCES Locations(LocationId),
     FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId)
 );
+
+CREATE TABLE DriversAvailable (
+    DriversAvailableId INT IDENTITY(1,1),
+    UserId INT NOT NULL,
+    DriversAvailableDate DATE NOT NULL,
+    PRIMARY KEY (DriversAvailableId),  
+    FOREIGN KEY (UserId) REFERENCES Users(UserId)
+); 
+
+CREATE TABLE SignUpDrivers (
+    UserId INT NOT NULL,
+    RouteId INT NOT NULL,
+    PRIMARY KEY (UserId,RouteId),
+    FOREIGN KEY (UserId) REFERENCES Users(UserId),
+    FOREIGN KEY (RouteId) REFERENCES Routes(RouteId)
+);
+
+
 -- Dummy data 
 -- UserTypes
 INSERT INTO UserTypes
@@ -203,3 +221,11 @@ VALUES (
         1,
         8
     );
+
+--DriversAvailable--
+INSERT INTO DriversAvailable
+VALUES (1, CURRENT_TIMESTAMP);
+
+--SignUpDrivers--
+INSERT INTO SignUpDrivers
+VALUES (1,1);
