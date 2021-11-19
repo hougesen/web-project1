@@ -4,16 +4,16 @@
 
 namespace AAOAdmin.Models
 {
-    public partial class RouteStatus
+  public partial class RouteStatus
+  {
+    public RouteStatus()
     {
-        public RouteStatus()
-        {
-            Routes = new HashSet<Route>();
-        }
-
-        public int RouteStatusId { get; set; }
-        public string RouteStatusName { get; set; }
-
-        public virtual ICollection<Route> Routes { get; set; }
+      Routes = new HashSet<Route>();
     }
+
+    public int RouteStatusId { get; set; }
+    public string RouteStatusName { get; set; }
+
+    public virtual ICollection<Route> Routes { get; set; }
+  }
 }

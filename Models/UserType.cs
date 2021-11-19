@@ -4,16 +4,16 @@
 
 namespace AAOAdmin.Models
 {
-    public partial class UserType
+  public partial class UserType
+  {
+    public UserType()
     {
-        public UserType()
-        {
-            Users = new HashSet<User>();
-        }
-
-        public int UserTypeId { get; set; }
-        public string UserTypeName { get; set; }
-
-        public virtual ICollection<User> Users { get; set; }
+      Users = new HashSet<User>();
     }
+
+    public int UserTypeId { get; set; }
+    public string UserTypeName { get; set; }
+
+    public virtual ICollection<User> Users { get; set; }
+  }
 }
