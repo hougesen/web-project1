@@ -4,13 +4,13 @@
 
 namespace AAOAdmin.Models
 {
-  public partial class aaoContext : DbContext
+  public partial class AAOContext : DbContext
   {
-    public aaoContext()
+    public AAOContext()
     {
     }
 
-    public aaoContext(DbContextOptions<aaoContext> options)
+    public AAOContext(DbContextOptions<AAOContext> options)
         : base(options)
     {
     }
