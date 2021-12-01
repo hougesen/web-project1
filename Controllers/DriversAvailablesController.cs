@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AAOAdmin.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AAOAdmin.Controllers
 {
@@ -21,8 +22,24 @@ namespace AAOAdmin.Controllers
         // GET: DriversAvailables
         public async Task<IActionResult> Index()
         {
-            var aAOContext = _context.DriversAvailables.Include(d => d.User);
-            return View(await aAOContext.ToListAsync());
+         //   var aAOContext = _context.DriversAvailables.Include(d => d.User);
+            return View(await _context.FromSqlRaw(@"SELECT Users.UserId, Users.UserFullName, 
+Users.UserPhoneNumber, 
+Users.UserEmail, 
+DriversAvailable.DriversAvailableDate, 
+CONCAT (Locations.LocationAddress, ', ', Locations.LocationPostalCode, ' ', Cities.CityName, ', ', Countries.CountryName) AS [Location]
+FROM Users
+INNER JOIN DriversAvailable
+ON Users.UserId = DriversAvailable.UserId
+LEFT JOIN DriverInformation
+ON Users.UserId = DriverInformation.UserId
+INNER JOIN Locations
+ON DriverInformation.LocationId = Locations.LocationId
+INNER JOIN Cities
+ON Locations.CityId = Cities.CityId
+INNER JOIN Countries
+ON Cities.CountryId = Countries.CountryId;
+").ToListAsync());
         }
 
         // GET: DriversAvailables/Details/5

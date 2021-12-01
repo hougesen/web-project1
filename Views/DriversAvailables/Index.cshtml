@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AAOAdmin.Models.DriversAvailable>
+@model IEnumerable<AAOAdmin.Models.DriversAvailable>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,10 +14,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DriversAvailableDate)
+              <h1>1</h1>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+              <h1>2</h1>
             </th>
             <th></th>
         </tr>
@@ -26,15 +26,15 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DriversAvailableDate)
+                @Html.DisplayFor(modelItem => item.UserId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.UserId)
+              @*  @Html.DisplayFor(modelItem => item.User.UserId)*@
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.DriversAvailableId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DriversAvailableId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.DriversAvailableId">Delete</a>
+              @*  <a asp-action="Edit" asp-route-id="@item.DriversAvailableId">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.DriversAvailableId">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.DriversAvailableId">Delete</a> *@
             </td>
         </tr>
 }
