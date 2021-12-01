@@ -1,0 +1,54 @@
+@model IEnumerable<AAOAdmin.Models.DriversAvailable>
+
+@{
+    ViewData["Title"] = "test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>test</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th>
+          @Html.DisplayNameFor(model => model.DriversAvailableDate)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.User.UserPhoneNumber)
+        </th>
+        <th>
+          @Html.DisplayNameFor(model => model.User.UserFullName)
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.DriversAvailableDate)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.UserFullName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.UserPhoneNumber)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
+
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
+        </td>
+
+
+
+      </tr>
+}
+    </tbody>
+</table>

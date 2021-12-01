@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AAOAdmin.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
+
 namespace AAOAdmin.Controllers
 {
     public class DriversAvailablesController : Controller
@@ -20,10 +21,17 @@ namespace AAOAdmin.Controllers
         }
 
         // GET: DriversAvailables
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-         //   var aAOContext = _context.DriversAvailables.Include(d => d.User);
-            return View(await _context.FromSqlRaw(@"SELECT Users.UserId, Users.UserFullName, 
+      using (AAOContext db=new AAOContext())
+      {
+        var list = db.Users.ToList();
+        return View(list);
+      }
+
+
+      //   var aAOContext = _context.DriversAvailables.Include(d => d.User);
+      /*return View(await _context.Database.ExecuteSqlRaw(@"SELECT Users.UserId, Users.UserFullName, 
 Users.UserPhoneNumber, 
 Users.UserEmail, 
 DriversAvailable.DriversAvailableDate, 
@@ -39,8 +47,8 @@ INNER JOIN Cities
 ON Locations.CityId = Cities.CityId
 INNER JOIN Countries
 ON Cities.CountryId = Countries.CountryId;
-").ToListAsync());
-        }
+").ToListAsync()); */
+    }
 
         // GET: DriversAvailables/Details/5
         public async Task<IActionResult> Details(int? id)

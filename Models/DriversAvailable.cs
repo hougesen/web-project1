@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 #nullable disable
 
@@ -11,5 +11,6 @@ namespace AAOAdmin.Models
     public DateTime DriversAvailableDate { get; set; }
 
     public virtual User User { get; set; }
+
   }
 }

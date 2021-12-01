@@ -11,20 +11,37 @@ namespace AAOAdmin.Controllers
     {
         private readonly AAOContext _context;
 
-        public UsersController(AAOContext context)
+
+
+      public UsersController(AAOContext context)
         {
             _context = context;
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
+       public async Task<IActionResult> Index()
         {
             var aAOContext = _context.Users.Where(u => u.UserTypeId == 2);
             return View(await aAOContext.ToListAsync());
         }
 
-        // GET: Users/Details/5
-        public async Task<IActionResult> Details(int? id)
+    public IActionResult test()
+    {
+      //using (AAOContext db = new AAOContext())
+      {
+        var list = _context.DriversAvailables
+          .Include(u => u.User)
+          .ThenInclude(u=> u.DriverInformation)
+          .ThenInclude(d=> d.Location)
+          .ThenInclude(l=> l.City)
+          .ThenInclude(c => c.Country)
+          .ToList();
+        return View(list);
+      }
+    }
+
+    // GET: Users/Details/5
+    public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
