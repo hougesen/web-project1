@@ -1,35 +1,38 @@
 @model IEnumerable<AAOAdmin.Models.DriversAvailable>
 
 @{
-    ViewData["Title"] = "test";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+  ViewData["Title"] = "test";
+  Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 
 <h1>test</h1>
 
 
 <table class="table">
-    <thead>
-      <tr>
-        <th>
-          Availability Date
-        </th>
-        <th>
-          Full Name
-        </th>
-        <th>
-          Phone Number
-        </th>
-        <th>
-          City
-        </th>
-        <th>
-          Country
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
+  <thead>
+    <tr>
+      <th>
+        Availability Date
+      </th>
+      <th>
+        Full Name
+      </th>
+      <th>
+        Phone Number
+      </th>
+      <th>
+        City
+      </th>
+      <th>
+        Country
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
       <tr>
         <td>
           @Html.DisplayFor(modelItem => item.DriversAvailableDate)
@@ -48,10 +51,30 @@
         <td>
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
         </td>
+        <td>
 
+          <div class="AddPopUp">
+            @Html.Label("Add pop up")
+          </div>
+          <div class="modal fade" id="MyPopUp" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  here are going your controls etc
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </td>
 
 
       </tr>
-}
-    </tbody>
+    }
+  </tbody>
 </table>
+
+
+
+
+
