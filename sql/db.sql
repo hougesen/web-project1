@@ -230,6 +230,10 @@ VALUES (1, CURRENT_TIMESTAMP);
 INSERT INTO SignUpDrivers
 VALUES (1,1);
 
+--DriversInfo--
+INSERT INTO DriverInformation (UserId, LocationId) VALUES (6, 1);
+
+
 -- DriversAvailable info --
 SELECT Users.UserId, Users.UserFullName, 
 Users.UserPhoneNumber, 
