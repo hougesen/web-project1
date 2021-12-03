@@ -18,13 +18,36 @@ namespace AAOAdmin.Controllers
             _context = context;
         }
 
-        // GET: Users
-       public async Task<IActionResult> Index()
-        {
-            var aAOContext = _context.Users.Where(u => u.UserTypeId == 2);
-            return View(await aAOContext.ToListAsync());
-        }
-
+    // GET: Users
+    /*public async Task<IActionResult> Index()
+     {
+         var aAOContext = _context.Users.Where(u => u.UserTypeId == 2);
+         return View(await aAOContext.ToListAsync());
+     }
+    */
+    public async Task<IActionResult> Index(string sortOrder)
+    {
+      ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+      ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+      var aAOContext = from s in _context.aAOContext
+                     select s;
+      switch (sortOrder)
+      {
+        case "name_desc":
+          students = students.OrderByDescending(s => s.LastName);
+          break;
+        case "Date":
+          students = students.OrderBy(s => s.EnrollmentDate);
+          break;
+        case "date_desc":
+          students = students.OrderByDescending(s => s.EnrollmentDate);
+          break;
+        default:
+          students = students.OrderBy(s => s.LastName);
+          break;
+      }
+      return View(await aAOContext.ToListAsync());
+    }
     public IActionResult test()
     {
       //using (AAOContext db = new AAOContext())
