@@ -1,53 +1,67 @@
-@model IEnumerable<AAOAdmin.Models.User>
+@model IEnumerable<AAOAdmin.Models.DriversAvailable>
 
 @{
-    Layout = "_Layout";
+  ViewData["Title"] = "test";
+  Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h1>test</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-
-</head>
-<body>
-
-<h1> Oversigt over ledige chauffører </h1>
+<form asp-action="Index" method="get">
+  <div class="form-actions no-color">
+    <p>
+      Find by Date: <input type="date" name="SearchString" value="@ViewData["CurrentFilter"]" />
+      <input type="submit" value="Search" class="btn btn-default" /> |
+      <a asp-action="Index">Back to Full List</a>
+    </p>
+  </div>
+</form>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                Navn
-            </th>
-            <th>
-               Tlf. nr
-            </th>
-            <th>
-                Email
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserFullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserPhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserEmail)
-            </td>
+  <thead>
+    <tr>
+      <th>
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">Availability Date</a>
+      </th>
+      <th>
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">Full Name</a>
+      </th>
+      <th>
+        Phone Number
+      </th>
+      <th>
+        City
+      </th>
+      <th>
+        Country
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.DriversAvailableDate)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.UserFullName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.UserPhoneNumber)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
 
-        </tr>
-}
-    </tbody>
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
+        </td>
+
+
+
+      </tr>
+    }
+  </tbody>
 </table>
-
-
-</body>
-</html>

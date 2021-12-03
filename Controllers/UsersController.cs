@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
+
 
 namespace AAOAdmin.Controllers
 {
@@ -25,28 +27,45 @@ namespace AAOAdmin.Controllers
          return View(await aAOContext.ToListAsync());
      }
     */
-    public async Task<IActionResult> Index(string sortOrder)
+    public async Task<IActionResult> Index(string sortOrder, string searchString)
     {
       ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
       ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
-      var aAOContext = from s in _context.aAOContext
-                     select s;
+      ViewData["CurrentFilter"] = searchString;
+
+      var list = from s in _context.DriversAvailables select s;
+
+      list = list.Where(l=>l.DriversAvailableDate>=DateTime.Today).Include(u => u.User)
+         .ThenInclude(u => u.DriverInformation)
+         .ThenInclude(d => d.Location)
+         .ThenInclude(l => l.City)
+         .ThenInclude(c => c.Country);
+
+      if (!String.IsNullOrEmpty(searchString))
+      {
+        var date = DateTime.Parse(searchString);
+        list = list.Where(s => s.DriversAvailableDate==date
+                               );
+      }
+
       switch (sortOrder)
       {
         case "name_desc":
-          students = students.OrderByDescending(s => s.LastName);
+          list = list.OrderBy(s => s.User.UserFullName);
           break;
         case "Date":
-          students = students.OrderBy(s => s.EnrollmentDate);
+          list = list.OrderBy(s => s.DriversAvailableDate);
           break;
         case "date_desc":
-          students = students.OrderByDescending(s => s.EnrollmentDate);
+          list = list.OrderByDescending(s => s.DriversAvailableDate);
+
+          //list = (Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<DriversAvailable, Country>)list.OrderByDescending(s => s.DriversAvailableDate);
           break;
         default:
-          students = students.OrderBy(s => s.LastName);
+        
           break;
       }
-      return View(await aAOContext.ToListAsync());
+      return View(await list.AsNoTracking().ToListAsync());
     }
     public IActionResult test()
     {
