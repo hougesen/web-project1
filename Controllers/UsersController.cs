@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 
 
 namespace AAOAdmin.Controllers
@@ -32,20 +33,40 @@ namespace AAOAdmin.Controllers
 
     public IActionResult test()
     {
-      //using (AAOContext db = new AAOContext())
-      {
-        var routeList = _context.Routes
-          .Include(r => r.Department)
-            .Include(r => r.Driver)
-            .Include(r => r.RouteEndLocation)
-            .Include(r => r.RouteStartLocation)
-            .Include(r => r.RouteStatus)
-            .Include(d => d.Driver.DriverInformation)
-            .Include(d => d.Driver.DriverInformation.User)
-            .ToList();
-        return View(routeList);
-      }
+
+      ViewBag.Message = "Welcome to my demo!";
+      dynamic mymodel = new ExpandoObject();
+      mymodel.Routes = GetRoutes();
+      mymodel.DriversAvailable = GetDrivers();
+      return View(mymodel);
     }
+
+    public List<Route> GetRoutes()
+      {
+        List<Route> Routes = new List<Route>();
+        return Routes;
+      }
+
+    public List<DriversAvailable> GetDrivers()
+    {
+      List<DriversAvailable> Drivers = new List<DriversAvailable>();
+      return Drivers;
+    }
+
+    //using (AAOContext db = new AAOContext())
+    /*{
+      var routeList = _context.Routes
+        .Include(r => r.Department)
+          .Include(r => r.Driver)
+          .Include(r => r.RouteEndLocation)
+          .Include(r => r.RouteStartLocation)
+          .Include(r => r.RouteStatus)
+          .Include(d => d.Driver.DriverInformation)
+          .Include(d => d.Driver.DriverInformation.User)
+          .ToList();
+      return View(routeList);
+    }*/
+
 
 
     // GET: Users/Details/5
