@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections;
+using System.Collections.Generic;
+
 
 namespace AAOAdmin.Controllers
 {
@@ -11,7 +14,7 @@ namespace AAOAdmin.Controllers
     {
         private readonly AAOContext _context;
 
-
+    public List<Route> routes = new();
 
       public UsersController(AAOContext context)
         {
@@ -23,6 +26,8 @@ namespace AAOAdmin.Controllers
         {
             var aAOContext = _context.Users.Where(u => u.UserTypeId == 2);
             return View(await aAOContext.ToListAsync());
+
+
         }
 
     public IActionResult test()
@@ -38,6 +43,18 @@ namespace AAOAdmin.Controllers
           .ToList();
         return View(list);
       }
+    }
+
+    public async Task TestRoutes()
+    {
+   var routeList = _context.Routes
+        .Include(r => r.Department)
+        .Include(r => r.Driver)
+        .Include(r => r.RouteEndLocation)
+        .Include(r => r.RouteStartLocation)
+        .Include(r => r.RouteStatus).ToListAsync();
+
+      routes = await routeList;
     }
 
     // GET: Users/Details/5
