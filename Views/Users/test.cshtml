@@ -1,92 +1,144 @@
-
-@model IEnumerable<AAOAdmin.Models.RoutesDriversViewModel>
+@model List<AAOAdmin.Models.Route>
 
 
 @{ ViewData["Title"] = "test";
-        Layout = "~/Views/Shared/_Layout.cshtml"; }
+  Layout = "~/Views/Shared/_Layout.cshtml"; }
+
 
 <h1>test</h1>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>
-        Availability Date
-      </th>
-      <th>
-        Full Name
-      </th>
-      <th>
-        Phone Number
-      </th>
-      <th>
-        City
-      </th>
-      <th>
-        Country
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (var item in Model)
-    {
-<tr>
-  <td>
-    @Html.DisplayFor(modelItem => item.DriversAvailableDate)
-  </td>
-  <td>
-    @Html.DisplayFor(modelItem => item.User.UserFullName)
-  </td>
-  <td>
-    @Html.DisplayFor(modelItem => item.User.UserPhoneNumber)
-  </td>
-  <td>
-    @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
+<button id="myBtn" asp-action="TestRoutes">Tildel</button>
 
-    @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
-  </td>
-  <td>
-    @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
-  </td>
-  <td>
+<!-- The Modal -->
+<div id="myModal" class="modal">
 
-    <button id="myBtn" asp-action="TestRoutes">Tildel</button>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        @foreach (var route in Model.Routes)
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Startdato</th>
+          <th>Slutdato</th>
+          <th>Varighed</th>
+          <th>Afdeling</th>
+          <th>Start lokation</th>
+          <th>Slut lokation</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var route in Model)
         {
-<tr>
-  <td>@Html.DisplayFor(modelItem => route.RouteStartDate)</td>
-  <td>@Html.DisplayFor(modelItem => route.RouteEndDate)</td>
-  <td>@Html.DisplayFor(modelItem => route.RouteEstTime) timer</td>
-  <td>@Html.DisplayFor(modelItem => route.Department.DepartmentName)</td>
-  <td>@Html.DisplayFor(modelItem => route.RouteStartLocation.LocationAddress)</td>
-  <td>@Html.DisplayFor(modelItem => route.RouteEndLocation.LocationAddress)</td>
-  <td>@Html.DisplayFor(modelItem => route.RouteStatus.RouteStatusName)</td>
+  <tr>
+    <td>@Html.DisplayFor(modelItem => route.RouteStartDate)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteEndDate)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteEstTime) timer</td>
+    <td>@Html.DisplayFor(modelItem => route.Department.DepartmentName)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteStartLocation.LocationAddress)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteEndLocation.LocationAddress)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteStatus.RouteStatusName)</td>
 
-  <td>
-    <a asp-action="Edit" asp-route-id="@route.RouteId">Rediger</a>
-  </td>
-</tr>
-}
+    <td>
+      <a asp-action="Edit" asp-route-id="@route.RouteId">Rediger</a>
+      @* <a asp-action="Details" asp-route-id="@item.RouteId">Details</a> |
+      <a asp-action="Delete" asp-route-id="@item.RouteId">Delete</a> *@
+    </td>
+  </tr>}
+      </tbody>
+    </table>
 
-        </div>
+  </div>
 
-        </div>
-
-        </td>
+</div>
 
 
-        </tr>}
-  </tbody>
-</table>
 
+
+
+
+@*<table class="table">
+    <thead>
+      <tr>
+        <th>
+          Availability Date
+        </th>
+        <th>
+          Full Name
+        </th>
+        <th>
+          Phone Number
+        </th>
+        <th>
+          City
+        </th>
+        <th>
+          Country
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (var item in Model)
+      {
+  <tr>
+    <td>
+      @Html.DisplayFor(modelItem => item.DriversAvailableDate)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.User.UserFullName)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.User.UserPhoneNumber)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
+
+      @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
+    </td>
+    <td>
+
+      <button id="myBtn" asp-action="TestRoutes">Tildel</button>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          @foreach (var route in Model.Routes)
+          {
+  <tr>
+    <td>@Html.DisplayFor(modelItem => route.RouteStartDate)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteEndDate)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteEstTime) timer</td>
+    <td>@Html.DisplayFor(modelItem => route.Department.DepartmentName)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteStartLocation.LocationAddress)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteEndLocation.LocationAddress)</td>
+    <td>@Html.DisplayFor(modelItem => route.RouteStatus.RouteStatusName)</td>
+
+    <td>
+      <a asp-action="Edit" asp-route-id="@route.RouteId">Rediger</a>
+    </td>
+  </tr>
+  }
+
+          </div>
+
+          </div>
+
+          </td>
+
+
+          </tr>}
+    </tbody>
+  </table>
+
+<button id="myBtn" asp-action="TestRoutes">Tildel</button>*@
 
 <script>
   // Get the modal

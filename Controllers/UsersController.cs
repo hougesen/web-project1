@@ -34,28 +34,19 @@ namespace AAOAdmin.Controllers
     {
       //using (AAOContext db = new AAOContext())
       {
-        var list = _context.DriversAvailables
-          .Include(u => u.User)
-          .ThenInclude(u=> u.DriverInformation)
-          .ThenInclude(d=> d.Location)
-          .ThenInclude(l=> l.City)
-          .ThenInclude(c => c.Country)
-          .ToList();
-        return View(list);
+        var routeList = _context.Routes
+          .Include(r => r.Department)
+            .Include(r => r.Driver)
+            .Include(r => r.RouteEndLocation)
+            .Include(r => r.RouteStartLocation)
+            .Include(r => r.RouteStatus)
+            .Include(d => d.Driver.DriverInformation)
+            .Include(d => d.Driver.DriverInformation.User)
+            .ToList();
+        return View(routeList);
       }
     }
 
-    public async Task TestRoutes()
-    {
-   var routeList = _context.Routes
-        .Include(r => r.Department)
-        .Include(r => r.Driver)
-        .Include(r => r.RouteEndLocation)
-        .Include(r => r.RouteStartLocation)
-        .Include(r => r.RouteStatus).ToListAsync();
-
-      routes = await routeList;
-    }
 
     // GET: Users/Details/5
     public async Task<IActionResult> Details(int? id)
