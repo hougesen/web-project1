@@ -4,12 +4,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System;
 using System.Web;
 
+=======
+>>>>>>> parent of 9be0cec (removed Ions code)
 
 namespace AAOAdmin.Controllers
 {
@@ -17,7 +20,7 @@ namespace AAOAdmin.Controllers
     {
         private readonly AAOContext _context;
 
-    public List<Route> routes = new();
+
 
       public UsersController(AAOContext context)
         {
@@ -29,8 +32,6 @@ namespace AAOAdmin.Controllers
         {
             var aAOContext = _context.Users.Where(u => u.UserTypeId == 2);
             return View(await aAOContext.ToListAsync());
-
-
         }
 
     public IActionResult test()
@@ -49,6 +50,7 @@ namespace AAOAdmin.Controllers
         return Routes;
       }
 
+<<<<<<< HEAD
     public List<DriversAvailable> GetDrivers()
     {
       List<DriversAvailable> Drivers = new List<DriversAvailable>();
@@ -71,6 +73,8 @@ namespace AAOAdmin.Controllers
 
 
 
+=======
+>>>>>>> parent of 9be0cec (removed Ions code)
     // GET: Users/Details/5
     public async Task<IActionResult> Details(int? id)
         {

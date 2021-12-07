@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @using AAOAdmin;
 @model dynamic
 
@@ -157,6 +158,43 @@
         <tbody>
           @foreach (var item in Model)
           {
+=======
+@model IEnumerable<AAOAdmin.Models.DriversAvailable>
+
+@{
+  ViewData["Title"] = "test";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1>test</h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Availability Date
+      </th>
+      <th>
+        Full Name
+      </th>
+      <th>
+        Phone Number
+      </th>
+      <th>
+        City
+      </th>
+      <th>
+        Country
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+>>>>>>> parent of 9be0cec (removed Ions code)
       <tr>
         <td>
           @Html.DisplayFor(modelItem => item.DriversAvailableDate)
@@ -169,6 +207,29 @@
         </td>
         <td>
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
+<<<<<<< HEAD
+=======
+
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
+        </td>
+        <td>
+
+          <div class="AddPopUp">
+            @Html.Label("Add pop up")
+          </div>
+          <div class="modal fade" id="MyPopUp" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  here are going your controls etc
+                </div>
+              </div>
+            </div>
+          </div>
+>>>>>>> parent of 9be0cec (removed Ions code)
 
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
         </td>
@@ -204,11 +265,19 @@
 
               </div>
 
+<<<<<<< HEAD
               </div>
+=======
+      </tr>
+    }
+  </tbody>
+</table>
+>>>>>>> parent of 9be0cec (removed Ions code)
 
               </td>
 
 
+<<<<<<< HEAD
               </tr>}
         </tbody>
       </table>
@@ -244,3 +313,7 @@
       }
     }
   </script>
+=======
+
+
+>>>>>>> parent of 9be0cec (removed Ions code)
