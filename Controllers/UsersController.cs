@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+<<<<<<< HEAD
 using System.Threading.Tasks;s
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ using System.Dynamic;
 using System;
 using System.Web;
 
+=======
+using System.Threading.Tasks;
+>>>>>>> parent of 9be0cec (removed Ions code)
 
 namespace AAOAdmin.Controllers
 {
@@ -48,6 +52,7 @@ namespace AAOAdmin.Controllers
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<DriversAvailable> GetDrivers()
     {
       List<DriversAvailable> Drivers = new List<DriversAvailable>();
@@ -70,6 +75,8 @@ namespace AAOAdmin.Controllers
 
 
 
+=======
+>>>>>>> parent of 9be0cec (removed Ions code)
 =======
 >>>>>>> parent of 9be0cec (removed Ions code)
     // GET: Users/Details/5

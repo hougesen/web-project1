@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 @using AAOAdmin;
 @model dynamic
 
@@ -167,6 +168,16 @@
 }
 
 
+=======
+@model IEnumerable<AAOAdmin.Models.DriversAvailable>
+
+@{
+  ViewData["Title"] = "test";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+>>>>>>> parent of 9be0cec (removed Ions code)
 
 <h1>test</h1>
 
@@ -194,6 +205,9 @@
   <tbody>
     @foreach (var item in Model)
     {
+<<<<<<< HEAD
+>>>>>>> parent of 9be0cec (removed Ions code)
+=======
 >>>>>>> parent of 9be0cec (removed Ions code)
       <tr>
         <td>
@@ -208,6 +222,7 @@
         <td>
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
@@ -217,6 +232,16 @@
         </td>
         <td>
 
+=======
+
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
+        </td>
+        <td>
+
+>>>>>>> parent of 9be0cec (removed Ions code)
           <div class="AddPopUp">
             @Html.Label("Add pop up")
           </div>
@@ -229,6 +254,9 @@
               </div>
             </div>
           </div>
+<<<<<<< HEAD
+>>>>>>> parent of 9be0cec (removed Ions code)
+=======
 >>>>>>> parent of 9be0cec (removed Ions code)
 
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
@@ -257,6 +285,7 @@
         <td>@Html.DisplayFor(modelItem => route.RouteEndLocation.LocationAddress)</td>
         <td>@Html.DisplayFor(modelItem => route.RouteStatus.RouteStatusName)</td>
 
+<<<<<<< HEAD
         <td>
           <a asp-action="Edit" asp-route-id="@route.RouteId">Rediger</a>
         </td>
@@ -268,6 +297,8 @@
 <<<<<<< HEAD
               </div>
 =======
+=======
+>>>>>>> parent of 9be0cec (removed Ions code)
       </tr>
     }
   </tbody>
@@ -277,6 +308,7 @@
               </td>
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
               </tr>}
         </tbody>
@@ -313,6 +345,10 @@
       }
     }
   </script>
+=======
+
+
+>>>>>>> parent of 9be0cec (removed Ions code)
 =======
 
 
