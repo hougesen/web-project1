@@ -18,7 +18,15 @@
       <th>
         Phone Number
       </th>
-      <th></th>
+      <th>
+        Location
+      </th>
+      <th>
+        Country
+      </th>
+      <th>
+        
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -43,7 +51,7 @@
     @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
   </td>
   <td>
-    <button class="AddPopUp" id="myBtn">Tildel</button>
+    <div><button id="myBtn">Tildel tur</button></div>
   </td>
 
 
@@ -53,64 +61,61 @@
 </table>
 
 
-<div class="modal fade" id="MyPopUp" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div class="modal-body">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>
-                Start Date
-              </th>
-              <th>
-                End Date
-              </th>
-              <th>
-                Department name
-              </th>
-              <th>
-                Start Location
-              </th>
-              <th>
-                End Location
-              </th>
-              <th>
-                Status
-              </th>
-              <th>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            Start Date
+          </th>
+          <th>
+            End Date
+          </th>
+          <th>
+            Department name
+          </th>
+          <th>
+            Start Location
+          </th>
+          <th>
+            End Location
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
 
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach (var item in ViewBag.Routes)
-            {
-      <tr>
-        <td>
-          @item.RouteStartDate
-        </td>
-        <td>
-          @item.RouteEndDate
-        </td>
-        <td>
-          @item.Department.DepartmentName
-        </td>
-        <td>
-          @item.RouteStartLocation.LocationAddress
-        </td>
-        <td>
-          @item.RouteEndLocation.LocationAddress
-        </td>
-        <td>
-          @item.RouteStatus.RouteStatusName
-        </td>
-      </tr>}
-          </tbody>
-        </table>
-      </div>
-    </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in ViewBag.Routes)
+        {
+          <tr>
+            <td>
+              @item.RouteStartDate
+            </td>
+            <td>
+              @item.RouteEndDate
+            </td>
+            <td>
+              @item.Department.DepartmentName
+            </td>
+            <td>
+              @item.RouteStartLocation.LocationAddress
+            </td>
+            <td>
+              @item.RouteEndLocation.LocationAddress
+            </td>
+            <td>
+              @item.RouteStatus.RouteStatusName
+            </td>
+          </tr>
+}
+      </tbody>
+    </table>
   </div>
 </div>
 
@@ -118,21 +123,9 @@
 
 
 
-
-      @*<div>@item.Department.DepartmentName</div>
-        <div>@item.RouteStartDate</div>
-        <div>@item.RouteEndDate</div>
-        <div>@item.RouteEndLocation.LocationAddress</div>
-        <div>@item.RouteStartLocation.LocationAddress</div>
-        <div>@item.RouteStatus.RouteStatusName</div>*@
-
-
-
-
-
       <script>
         // Get the modal
-        let modal = document.getElementById("MyPopUp");
+        let modal = document.getElementById("myModal");
 
         // Get the button that opens the modal
         let btn = document.querySelectorAll("#myBtn");
