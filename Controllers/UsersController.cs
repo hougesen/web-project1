@@ -3,16 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Threading.Tasks;
-<<<<<<< HEAD
+using System.Threading.Tasks;s
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System;
 using System.Web;
 
-=======
->>>>>>> parent of 9be0cec (removed Ions code)
 
 namespace AAOAdmin.Controllers
 {
