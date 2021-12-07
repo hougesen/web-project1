@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 @using AAOAdmin;
 @model dynamic
 
@@ -159,7 +157,9 @@
         <tbody>
           @foreach (var item in Model)
           {
-=======
+
+
+
 @model IEnumerable<AAOAdmin.Models.DriversAvailable>
 
 @{
@@ -168,16 +168,7 @@
 }
 
 
-=======
-@model IEnumerable<AAOAdmin.Models.DriversAvailable>
 
-@{
-  ViewData["Title"] = "test";
-  Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-
->>>>>>> parent of 9be0cec (removed Ions code)
 
 <h1>test</h1>
 
@@ -205,10 +196,6 @@
   <tbody>
     @foreach (var item in Model)
     {
-<<<<<<< HEAD
->>>>>>> parent of 9be0cec (removed Ions code)
-=======
->>>>>>> parent of 9be0cec (removed Ions code)
       <tr>
         <td>
           @Html.DisplayFor(modelItem => item.DriversAvailableDate)
@@ -221,9 +208,7 @@
         </td>
         <td>
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
         </td>
@@ -232,7 +217,6 @@
         </td>
         <td>
 
-=======
 
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
         </td>
@@ -241,7 +225,6 @@
         </td>
         <td>
 
->>>>>>> parent of 9be0cec (removed Ions code)
           <div class="AddPopUp">
             @Html.Label("Add pop up")
           </div>
@@ -254,10 +237,6 @@
               </div>
             </div>
           </div>
-<<<<<<< HEAD
->>>>>>> parent of 9be0cec (removed Ions code)
-=======
->>>>>>> parent of 9be0cec (removed Ions code)
 
           @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
         </td>
@@ -285,7 +264,26 @@
         <td>@Html.DisplayFor(modelItem => route.RouteEndLocation.LocationAddress)</td>
         <td>@Html.DisplayFor(modelItem => route.RouteStatus.RouteStatusName)</td>
 
-<<<<<<< HEAD
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
+        </td>
+        <td>
+
+          <div class="AddPopUp">
+            @Html.Label("Add pop up")
+          </div>
+          <div class="modal fade" id="MyPopUp" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  here are going your controls etc
+                </div>
+              </div>
+            </div>
+          </div>
+
         <td>
           <a asp-action="Edit" asp-route-id="@route.RouteId">Rediger</a>
         </td>
@@ -294,22 +292,14 @@
 
               </div>
 
-<<<<<<< HEAD
               </div>
-=======
-=======
->>>>>>> parent of 9be0cec (removed Ions code)
       </tr>
     }
   </tbody>
 </table>
->>>>>>> parent of 9be0cec (removed Ions code)
 
               </td>
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
               </tr>}
         </tbody>
       </table>
@@ -345,11 +335,4 @@
       }
     }
   </script>
-=======
 
-
->>>>>>> parent of 9be0cec (removed Ions code)
-=======
-
-
->>>>>>> parent of 9be0cec (removed Ions code)
