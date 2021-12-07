@@ -4,20 +4,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-using System.Dynamic;
-using System;
-using System.Web;
-
 
 namespace AAOAdmin.Controllers
 {
     public class UsersController : Controller
     {
         private readonly AAOContext _context;
-
-
 
       public UsersController(AAOContext context)
         {
@@ -31,42 +23,35 @@ namespace AAOAdmin.Controllers
             return View(await aAOContext.ToListAsync());
         }
 
+
     public IActionResult test()
     {
-
-      ViewBag.Message = "Welcome to my demo!";
-      dynamic mymodel = new ExpandoObject();
-      mymodel.Routes = GetRoutes();
-      mymodel.DriversAvailable = GetDrivers();
-      return View(mymodel);
-    }
-
-    public List<Route> GetRoutes()
+      //using (AAOContext db = new AAOContext())
       {
-        List<Route> Routes = new List<Route>();
-        return Routes;
-      }
+        var list = _context.DriversAvailables
+          .Include(u => u.User)
+          .ThenInclude(u => u.DriverInformation)
+          .ThenInclude(d => d.Location)
+          .ThenInclude(l => l.City)
+          .ThenInclude(c => c.Country)
+          .Include(r => r.User.Routes)
+          .ToList();
 
-    public List<DriversAvailable> GetDrivers()
-    {
-      List<DriversAvailable> Drivers = new List<DriversAvailable>();
-      return Drivers;
-    }
-
-    //using (AAOContext db = new AAOContext())
-    /*{
-      var routeList = _context.Routes
-        .Include(r => r.Department)
+        ViewData["Routes"] = _context.Routes
+          .Include(r => r.Department)
           .Include(r => r.Driver)
           .Include(r => r.RouteEndLocation)
           .Include(r => r.RouteStartLocation)
-          .Include(r => r.RouteStatus)
-          .Include(d => d.Driver.DriverInformation)
-          .Include(d => d.Driver.DriverInformation.User)
-          .ToList();
-      return View(routeList);
-    }*/
+          .Include(r => r.RouteStatus).Where(s=>s.RouteStatusId == 1)
 
+
+
+          //.Include(r => r.RouteStartLocation)
+          //.Include(r => r.RouteEndLocation)
+          .ToList();
+        return View(list);
+      }
+    }
 
     // GET: Users/Details/5
     public async Task<IActionResult> Details(int? id)

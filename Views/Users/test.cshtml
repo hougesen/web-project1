@@ -1,177 +1,10 @@
-@using AAOAdmin;
-@model dynamic
 
+@model IEnumerable<AAOAdmin.Models.DriversAvailable>
 
 @{ ViewData["Title"] = "test";
   Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-
-
-
-<h1>@ViewBag.Message</h1>
-
- <table class="table">
-            <thead>
-              <tr>
-                <th>Startdato</th>
-                <th>Slutdato</th>
-                <th>Varighed</th>
-                <th>Afdeling</th>
-                <th>Start lokation</th>
-                <th>Slut lokation</th>
-                <th>Status</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach (Route route in Model.Routes)
-              {
-        <tr>
-          <td>@route.RouteStartDate)</td>
-          <td>@route.RouteEndDate)</td>
-          <td>@route.RouteEstTime) timer</td>
-          <td>@route.Department.DepartmentName)</td>
-          <td>@route.RouteStartLocation.LocationAddress)</td>
-          <td>@route.RouteEndLocation.LocationAddress)</td>
-          <td>@route.RouteStatus.RouteStatusName)</td>
-
-          <td>
-            <a asp-action="Edit" asp-route-id="@route.RouteId">Rediger</a>
-            @* <a asp-action="Details" asp-route-id="@item.RouteId">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.RouteId">Delete</a> *@
-      </td>
-      </tr>}
-      </tbody>
-      </table>
-
-
- <table>
-
-
-   <thead>
-     <tr>
-       <th>Availability Date</th>
-       <th>Full Name</th>
-       <th>Phone Number</th>
-       <th>City</th>
-       <th>Country</th>
-     </tr>
-   </thead>
-   <tbody>
-     @foreach (DriversAvailable drivers in Model.DriversAvailable)
-     {
- <tr>
-   <td>
-     @drivers.DriversAvailableDate)
-   </td>
-   <td>
-     @drivers.User.UserFullName)
-   </td>
-   <td>
-     @drivers.User.UserPhoneNumber)
-   </td>
-   <td>
-     @drivers.User.DriverInformation.Location.LocationPostalCode)
-
-     @drivers.User.DriverInformation.Location.City.CityName)
-   </td>
-   <td>
-     @drivers.User.DriverInformation.Location.City.Country.CountryName)
-   </td>
-   </tr>
-     }
- </tbody>
-</table>
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  @*<div class="modal-content">
-          <span class="close">&times;</span>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Startdato</th>
-                <th>Slutdato</th>
-                <th>Varighed</th>
-                <th>Afdeling</th>
-                <th>Start lokation</th>
-                <th>Slut lokation</th>
-                <th>Status</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach (var route in Model)
-              {
-        <tr>
-          <td>@Html.DisplayFor(modelItem => route.RouteStartDate)</td>
-          <td>@Html.DisplayFor(modelItem => route.RouteEndDate)</td>
-          <td>@Html.DisplayFor(modelItem => route.RouteEstTime) timer</td>
-          <td>@Html.DisplayFor(modelItem => route.Department.DepartmentName)</td>
-          <td>@Html.DisplayFor(modelItem => route.RouteStartLocation.LocationAddress)</td>
-          <td>@Html.DisplayFor(modelItem => route.RouteEndLocation.LocationAddress)</td>
-          <td>@Html.DisplayFor(modelItem => route.RouteStatus.RouteStatusName)</td>
-
-          <td>
-            <a asp-action="Edit" asp-route-id="@route.RouteId">Rediger</a>
-            @* <a asp-action="Details" asp-route-id="@item.RouteId">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.RouteId">Delete</a>
-      </td>
-      </tr>}
-      </tbody>
-      </table>
-
-    </div>
-
-    </div>
-  *@
-
-
-
-
-
-
-  @*<table class="table">
-        <thead>
-          <tr>
-            <th>
-              Availability Date
-            </th>
-            <th>
-              Full Name
-            </th>
-            <th>
-              Phone Number
-            </th>
-            <th>
-              City
-            </th>
-            <th>
-              Country
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach (var item in Model)
-          {
-
-
-
-@model IEnumerable<AAOAdmin.Models.DriversAvailable>
-
-@{
-  ViewData["Title"] = "test";
-  Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-
-
-
 <h1>test</h1>
-
 
 <table class="table">
   <thead>
@@ -185,154 +18,144 @@
       <th>
         Phone Number
       </th>
-      <th>
-        City
-      </th>
-      <th>
-        Country
-      </th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     @foreach (var item in Model)
     {
-      <tr>
-        <td>
-          @Html.DisplayFor(modelItem => item.DriversAvailableDate)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.User.UserFullName)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.User.UserPhoneNumber)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
+<tr>
+  <td>
+    @item.DriversAvailableDate
+  </td>
+  <td>
+    @item.User.UserFullName
+  </td>
+  <td>
+    @item.User.UserPhoneNumber
+  </td>
+  <td>
+    @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
+
+    @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
+  </td>
+  <td>
+    @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
+  </td>
+  <td>
+    <button class="AddPopUp" id="myBtn">Tildel</button>
+  </td>
 
 
-          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
-        </td>
-        <td>
-
-
-          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
-        </td>
-        <td>
-
-          <div class="AddPopUp">
-            @Html.Label("Add pop up")
-          </div>
-          <div class="modal fade" id="MyPopUp" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-body">
-                  here are going your controls etc
-                </div>
-              </div>
-            </div>
-          </div>
-
-          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
-        </td>
-        <td>
-
-          <button id="myBtn" asp-action="TestRoutes">Tildel</button>
-
-          <!-- The Modal -->
-          <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              @foreach (var route in Model.Routes)
-              {
-      <tr>
-        <td>@Html.DisplayFor(modelItem => route.RouteStartDate)</td>
-        <td>@Html.DisplayFor(modelItem => route.RouteEndDate)</td>
-        <td>@Html.DisplayFor(modelItem => route.RouteEstTime) timer</td>
-        <td>@Html.DisplayFor(modelItem => route.Department.DepartmentName)</td>
-        <td>@Html.DisplayFor(modelItem => route.RouteStartLocation.LocationAddress)</td>
-        <td>@Html.DisplayFor(modelItem => route.RouteEndLocation.LocationAddress)</td>
-        <td>@Html.DisplayFor(modelItem => route.RouteStatus.RouteStatusName)</td>
-
-          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
-        </td>
-        <td>
-
-          <div class="AddPopUp">
-            @Html.Label("Add pop up")
-          </div>
-          <div class="modal fade" id="MyPopUp" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-body">
-                  here are going your controls etc
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <td>
-          <a asp-action="Edit" asp-route-id="@route.RouteId">Rediger</a>
-        </td>
-      </tr>
-      }
-
-              </div>
-
-              </div>
-      </tr>
-    }
+</tr>
+}
   </tbody>
 </table>
 
-              </td>
 
-              </tr>}
-        </tbody>
-      </table>
+<div class="modal fade" id="MyPopUp" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                Start Date
+              </th>
+              <th>
+                End Date
+              </th>
+              <th>
+                Department name
+              </th>
+              <th>
+                Start Location
+              </th>
+              <th>
+                End Location
+              </th>
+              <th>
+                Status
+              </th>
+              <th>
 
-    <button id="myBtn" asp-action="TestRoutes">Tildel</button>*@
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (var item in ViewBag.Routes)
+            {
+      <tr>
+        <td>
+          @item.RouteStartDate
+        </td>
+        <td>
+          @item.RouteEndDate
+        </td>
+        <td>
+          @item.Department.DepartmentName
+        </td>
+        <td>
+          @item.RouteStartLocation.LocationAddress
+        </td>
+        <td>
+          @item.RouteEndLocation.LocationAddress
+        </td>
+        <td>
+          @item.RouteStatus.RouteStatusName
+        </td>
+      </tr>}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <script>
-    // Get the modal
-    let modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    let btn = document.querySelectorAll("#myBtn");
-
-    for (let i = 0; i < btn.length; i++) {
-      btn[i].onclick = function () {
-        modal.style.display = "block";
-      }
-    }
-
-    // Get the <span> element that closes the modal
-    let span = document.getElementsByClassName("close")[0];
 
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-      modal.style.display = "none";
-    }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-  </script>
 
+
+      @*<div>@item.Department.DepartmentName</div>
+        <div>@item.RouteStartDate</div>
+        <div>@item.RouteEndDate</div>
+        <div>@item.RouteEndLocation.LocationAddress</div>
+        <div>@item.RouteStartLocation.LocationAddress</div>
+        <div>@item.RouteStatus.RouteStatusName</div>*@
+
+
+
+
+
+      <script>
+        // Get the modal
+        let modal = document.getElementById("MyPopUp");
+
+        // Get the button that opens the modal
+        let btn = document.querySelectorAll("#myBtn");
+
+        for (let i = 0; i < btn.length; i++) {
+          btn[i].onclick = function () {
+            modal.style.display = "block";
+          }
+        }
+
+        // Get the <span> element that closes the modal
+        let span = document.getElementsByClassName("close")[0];
+
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      </script>
