@@ -8,45 +8,47 @@ using System.Threading.Tasks;
 
 namespace AAOAdmin.Controllers
 {
-    public class RoutesController : Controller
+  public class RoutesController : Controller
+  {
+    private readonly AAOContext _context;
+
+    public RoutesController(AAOContext context)
     {
-        private readonly AAOContext _context;
+      _context = context;
+    }
 
-        public RoutesController(AAOContext context)
-        {
-            _context = context;
-        }
+    // GET: Routes
+    public async Task<IActionResult> Index()
+    {
+      var aAOContext = _context.Routes.Include(r => r.Department).Include(r => r.Driver).Include(r => r.RouteEndLocation).Include(r => r.RouteStartLocation).Include(r => r.RouteStatus);
+      return View(await aAOContext.ToListAsync());
+    }
 
-        // GET: Routes
-        public async Task<IActionResult> Index()
-        {
-            var aAOContext = _context.Routes.Include(r => r.Department).Include(r => r.Driver).Include(r => r.RouteEndLocation).Include(r => r.RouteStartLocation).Include(r => r.RouteStatus);
-            return View(await aAOContext.ToListAsync());
-        }
 
-        // GET: Routes/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+// GET: Routes/Details/5
+public async Task<IActionResult> Details(int? id)
+    {
+      if (id == null)
+      {
+        return NotFound();
+      }
 
-            var route = await _context.Routes
-                .Include(r => r.Department)
-                .Include(r => r.Driver)
-                .Include(r => r.RouteEndLocation)
-                .Include(r => r.RouteStartLocation)
-                .Include(r => r.RouteStatus)
-                .FirstOrDefaultAsync(m => m.RouteId == id);
-            if (route == null)
-            {
-                return NotFound();
-            }
+      var route = await _context.Routes
+          .Include(r => r.Department)
+          .Include(r => r.Driver)
+          .Include(r => r.RouteEndLocation)
+          .Include(r => r.RouteStartLocation)
+          .Include(r => r.RouteStatus)
+          .FirstOrDefaultAsync(m => m.RouteId == id);
+      if (route == null)
+      {
+        return NotFound();
+      }
 
-            return View(route);
-        }
-
+      return View(route);
+    }
+ 
+    
         // GET: Routes/Create
         public IActionResult Create()
         {

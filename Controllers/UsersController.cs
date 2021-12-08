@@ -17,14 +17,14 @@ namespace AAOAdmin.Controllers
         }
 
         // GET: Users
-       public async Task<IActionResult> Index()
+       public async Task<IActionResult> test()
         {
             var aAOContext = _context.Users.Where(u => u.UserTypeId == 2);
             return View(await aAOContext.ToListAsync());
         }
 
 
-    public IActionResult test()
+    public IActionResult Index()
     {
       //using (AAOContext db = new AAOContext())
       {
@@ -44,14 +44,14 @@ namespace AAOAdmin.Controllers
           .Include(r => r.RouteStartLocation)
           .Include(r => r.RouteStatus).Where(s=>s.RouteStatusId == 1)
 
-
-
           //.Include(r => r.RouteStartLocation)
           //.Include(r => r.RouteEndLocation)
           .ToList();
         return View(list);
       }
     }
+
+
 
     // GET: Users/Details/5
     public async Task<IActionResult> Details(int? id)

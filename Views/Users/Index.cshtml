@@ -1,53 +1,157 @@
-@model IEnumerable<AAOAdmin.Models.User>
 
-@{
-    Layout = "_Layout";
-}
+@model IEnumerable<AAOAdmin.Models.DriversAvailable>
 
-<!DOCTYPE html>
+@{ ViewData["Title"] = "Chauffører";
+  Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-
-</head>
-<body>
-
-<h1> Oversigt over ledige chauffører </h1>
+<h1>Chauffører</h1>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                Navn
-            </th>
-            <th>
-               Tlf. nr
-            </th>
-            <th>
-                Email
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserFullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserPhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserEmail)
-            </td>
+  <thead>
+    <tr>
+      <th>
+        Ledighed
+      </th>
+      <th>
+        Fulde navn
+      </th>
+      <th>
+        Telefonnummer
+      </th>
+      <th>
+        Lokation
+      </th>
+      <th>
+        Land
+      </th>
+      <th>
+        
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+<tr>
+  <td>
+    @item.DriversAvailableDate
+  </td>
+  <td>
+    @item.User.UserFullName
+  </td>
+  <td>
+    @item.User.UserPhoneNumber
+  </td>
+  <td>
+    @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.LocationPostalCode)
 
-        </tr>
+    @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.CityName)
+  </td>
+  <td>
+    @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
+  </td>
+  <td>
+    <div><a asp-route-id="@item.UserId" id="myBtn">Tildel tur</a></div>
+  </td>
+
+
+</tr>
 }
-    </tbody>
+  </tbody>
 </table>
 
 
-</body>
-</html>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            Start Date
+          </th>
+          <th>
+            End Date
+          </th>
+          <th>
+            Department name
+          </th>
+          <th>
+            Start Location
+          </th>
+          <th>
+            End Location
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in ViewBag.Routes)
+        {
+          <tr>
+            <td>
+              @item.RouteStartDate
+            </td>
+            <td>
+              @item.RouteEndDate
+            </td>
+            <td>
+              @item.Department.DepartmentName
+            </td>
+            <td>
+              @item.RouteStartLocation.LocationAddress
+            </td>
+            <td>
+              @item.RouteEndLocation.LocationAddress
+            </td>
+            <td>
+              @item.RouteStatus.RouteStatusName
+            </td>
+            <td>
+              <div><button id="myBtn">Tildel</button></div>
+            </td>
+          </tr>
+}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+      <script>
+        // Get the modal
+        let modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        let btn = document.querySelectorAll("#myBtn");
+
+        for (let i = 0; i < btn.length; i++) {
+          btn[i].onclick = function () {
+            modal.style.display = "block";
+          }
+        }
+
+        // Get the <span> element that closes the modal
+        let span = document.getElementsByClassName("close")[0];
+
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      </script>
