@@ -12,10 +12,10 @@
     <thead>
       <tr>
         <th>
-          Availability Date
+          <a asp-action="Index" asp-route-sortOrder="@ViewData["Date"]">Availability Date</a>
         </th>
         <th>
-          Full Name
+          <a asp-action="Index" asp-route-sortOrder="@ViewData["name_desc"]">Full Name</a>
         </th>
         <th>
           Phone Number
