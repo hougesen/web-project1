@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AAOAdmin.Controllers
 {
-    public class DashboardController : Controller
+  public class DashboardController : Controller
+  {
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+      return View();
     }
+  }
 }
