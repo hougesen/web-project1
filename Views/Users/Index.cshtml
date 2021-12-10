@@ -1,11 +1,16 @@
-
 @model IEnumerable<AAOAdmin.Models.DriversAvailable>
+@using static AAOAdmin.Controllers.UsersController
 
 @{ ViewData["Title"] = "Chauffører";
-  Layout = "~/Views/Shared/_Layout.cshtml"; }
+  Layout = "~/Views/Shared/_Layout.cshtml";
+    int RouteId =-1 ;
+    int UserId = -1;
+
+    }
 
 <h1>Chauffører</h1>
-
+@UserId
+@RouteId  
 <table class="table">
   <thead>
     <tr>
@@ -51,7 +56,8 @@
     @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
   </td>
   <td>
-    <div><a asp-route-id="@item.UserId" id="myBtn">Tildel tur</a></div>
+    <asp:button asp-route-id="@item.UserId" onclick="switchModal(@item.UserId)" runat="server" text="Button" OnClientClick="return false;" id="myBtn">Tildel tur</asp:button>
+
   </td>
 
 
@@ -113,7 +119,7 @@
               @item.RouteStatus.RouteStatusName
             </td>
             <td>
-              <div><button id="myBtn">Tildel</button></div>
+              <div><button id="myBtn" onclick="assignRoute(@item.RouteId)">Tildel</button></div>
             </td>
           </tr>
 }
@@ -122,22 +128,19 @@
   </div>
 </div>
 
+<input runat="server" id="hiddenUserId"  value="" />
+
 
 
 
 
       <script>
+        let userId = null; 
         // Get the modal
         let modal = document.getElementById("myModal");
 
         // Get the button that opens the modal
         let btn = document.querySelectorAll("#myBtn");
-
-        for (let i = 0; i < btn.length; i++) {
-          btn[i].onclick = function () {
-            modal.style.display = "block";
-          }
-        }
 
         // Get the <span> element that closes the modal
         let span = document.getElementsByClassName("close")[0];
@@ -145,13 +148,36 @@
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
+          userId = null;
+
           modal.style.display = "none";
         }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
           if (event.target == modal) {
+            userId = null;
+
             modal.style.display = "none";
           }
         }
+
+        function switchModal(uId = null) {
+          modal.style.display = "block";
+          userId = uId;
+          console.log(userId);
+        }
+
+        function assignRoute(routeId) {
+          console.log(routeId, userId)
+
+          if (routeId && userId) {
+            //console.log(test);
+
+            let ass = @AssignRoute(RouteId, UserId);
+            console.log(ass);
+
+          }
+        }
+
       </script>
