@@ -192,9 +192,9 @@ namespace AAOAdmin.Models
                   .HasForeignKey(d => d.DepartmentId)
                   .HasConstraintName("FK__Routes__Departme__4D94879B");
 
-        entity.HasOne(d => d.Driver)
+        entity.HasOne(d => d.User)
                   .WithMany(p => p.Routes)
-                  .HasForeignKey(d => d.DriverId)
+                  .HasForeignKey(d => d.UserId)
                   .HasConstraintName("FK__Routes__DriverId__49C3F6B7");
 
         entity.HasOne(d => d.RouteEndLocation)

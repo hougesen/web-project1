@@ -3,14 +3,10 @@
 
 @{ ViewData["Title"] = "Chauffører";
   Layout = "~/Views/Shared/_Layout.cshtml";
-    int RouteId =-1 ;
-    int UserId = -1;
 
     }
 
-<h1>Chauffører</h1>
-@UserId
-@RouteId  
+<h1>Chauffører</h1> 
 <table class="table">
   <thead>
     <tr>
@@ -128,13 +124,14 @@
   </div>
 </div>
 
-<input runat="server" id="hiddenUserId"  value="" />
-
-
-
 
 
       <script>
+
+        fetch('https://localhost:44389/api/routesapi/')
+          .then(response => response.json())
+          .then(data => console.log(data));
+
         let userId = null; 
         // Get the modal
         let modal = document.getElementById("myModal");
@@ -168,16 +165,22 @@
           console.log(userId);
         }
 
-        function assignRoute(routeId) {
+        async function assignRoute(routeId) {
           console.log(routeId, userId)
 
           if (routeId && userId) {
-            //console.log(test);
+  
+            const response = await fetch(`https://localhost:44389/api/routesapi/${routeId}/${userId}`, {method:"PUT"})
+             .then(response => response.json())
+             console.log(response)
 
-            let ass = @AssignRoute(RouteId, UserId);
-            console.log(ass);
-
+            window.alert("Chaufføren fik tildelt ruten");
+            window.location.reload();
           }
         }
+
+        
+            
+
 
       </script>
