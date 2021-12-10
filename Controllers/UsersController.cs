@@ -32,7 +32,7 @@ namespace AAOAdmin.Controllers
          return View(await aAOContext.ToListAsync());
      }
     */
-    public async Task<IActionResult> Index(string sortOrder, string searchString)
+    public async Task<IActionResult> Filter(string sortOrder, string searchString)
     {
       ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
       ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
@@ -72,7 +72,7 @@ namespace AAOAdmin.Controllers
       }
       return View(await list.AsNoTracking().ToListAsync());
     }
-    public IActionResult test()
+    public IActionResult Index()
      {
       //using (AAOContext db = new AAOContext())
       {
