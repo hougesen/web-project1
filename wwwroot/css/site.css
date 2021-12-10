@@ -76,6 +76,7 @@ html {
   cursor: pointer;
   margin: auto;
   display: block;
+  font-size: 16px;
 }
 
   #myBtn:hover {
@@ -123,3 +124,15 @@ html {
 }
 
 
+.edit-btn {
+  background: #888;
+  border-radius: 5px;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  margin: auto;
+  display: block;
+  text-decoration: none;
+  font-size: 16px;
+}

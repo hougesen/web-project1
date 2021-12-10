@@ -31,7 +31,7 @@
                 <td>@Html.DisplayFor(modelItem => item.RouteStatus.RouteStatusName)</td>
 
                 <td>
-                  <a asp-action="Edit" asp-route-id="@item.RouteId">Rediger</a>
+                  <div style="display:flex;"><a asp-action="Edit" asp-route-id="@item.RouteId" class="edit-btn">Rediger</a></div>
                   <!--<a asp-action="Details" asp-route-id="@item.RouteId">Details</a> |
                       <a asp-action="Delete" asp-route-id="@item.RouteId">Delete</a> -->
                 </td>

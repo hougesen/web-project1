@@ -52,7 +52,7 @@
     @Html.DisplayFor(modelItem => item.User.DriverInformation.Location.City.Country.CountryName)
   </td>
   <td>
-    <asp:button asp-route-id="@item.UserId" onclick="switchModal(@item.UserId)" runat="server" text="Button" OnClientClick="return false;" id="myBtn">Tildel tur</asp:button>
+    <button asp-route-id="@item.UserId" onclick="switchModal(@item.UserId)" runat="server" text="Button" OnClientClick="return false;" id="myBtn">Tildel tur</button>
 
   </td>
 
