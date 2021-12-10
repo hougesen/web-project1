@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
+
 
 namespace AAOAdmin.Controllers
 {
@@ -22,10 +24,56 @@ namespace AAOAdmin.Controllers
       var aAOContext = _context.Users.Where(u => u.UserTypeId == 2);
       return View(await aAOContext.ToListAsync());
     }
-
-
-    public IActionResult Index()
+ 
+    // GET: Users
+    /*public async Task<IActionResult> Index()
+     {
+         var aAOContext = _context.Users.Where(u => u.UserTypeId == 2);
+         return View(await aAOContext.ToListAsync());
+     }
+    */
+    public async Task<IActionResult> Index(string sortOrder, string searchString)
     {
+      ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+      ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+      ViewData["CurrentFilter"] = searchString;
+
+      var list = from s in _context.DriversAvailables select s;
+
+      list = list.Where(l=>l.DriversAvailableDate>=DateTime.Today).Include(u => u.User)
+         .ThenInclude(u => u.DriverInformation)
+         .ThenInclude(d => d.Location)
+         .ThenInclude(l => l.City)
+         .ThenInclude(c => c.Country);
+
+      if (!String.IsNullOrEmpty(searchString))
+      {
+        var date = DateTime.Parse(searchString);
+        list = list.Where(s => s.DriversAvailableDate==date
+                               );
+      }
+
+      switch (sortOrder)
+      {
+        case "name_desc":
+          list = list.OrderBy(s => s.User.UserFullName);
+          break;
+        case "Date":
+          list = list.OrderBy(s => s.DriversAvailableDate);
+          break;
+        case "date_desc":
+          list = list.OrderByDescending(s => s.DriversAvailableDate);
+
+          //list = (Microsoft.EntityFrameworkCore.Query.IIncludableQueryable<DriversAvailable, Country>)list.OrderByDescending(s => s.DriversAvailableDate);
+          break;
+        default:
+        
+          break;
+      }
+      return View(await list.AsNoTracking().ToListAsync());
+    }
+    public IActionResult test()
+     {
       //using (AAOContext db = new AAOContext())
       {
         var list = _context.DriversAvailables
