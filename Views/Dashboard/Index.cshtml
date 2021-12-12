@@ -1,7 +1,73 @@
 @page
-@model AAOAdmin.Views.Dashboard.IndexModel
+@using AAOAdmin.Models
+@using static AAOAdmin.Controllers.DashboardController
+@using System
+@using System.Collections
+
 @{
+  int[] calendarDates = CalendarDates();
+  int routesMissingDrivers = GetRoutesMissingDrivers();
+  int routesThisWeek = GetRoutesThisWeek();
+  int availableDriversThisWeek = GetAvailableDriversThisWeek();
 }
 
+<div class="grid grid-cols-2 gap-4">
 
-<h1>Her skal der være et Dashboard</h1>
+  <div class="grid grid-cols-3 grid-rows-3 gap-4 ">
+    <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col ">
+      <h3 class="font-bold text-2xl	">
+        @routesThisWeek
+      </h3>
+
+      <h3 class="text-xl">Ruter denne uge</h3>
+    </div>
+
+    <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col ">
+      <h3 class="font-bold text-2xl	">
+        @routesMissingDrivers
+      </h3>
+
+      <h3 class="text-xl">Ruter uden chauffør</h3>
+    </div>
+
+    <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col ">
+      <h3 class="font-bold text-2xl	">
+        @availableDriversThisWeek
+      </h3>
+
+      <h3 class="text-xl">Ledige chauffører dage</h3>
+    </div>
+
+  </div>
+
+  <div class="w-100 grid grid-cols-7 gap-2 text-center	">
+    @for (int i = 0; i < calendarDates.Length; ++i)
+    {
+      <div class="calendar-date relative flex place-items-center	place-content-center w-100 p-4 rounded-full"
+      style="border:2px solid @(calendarDates[i] == 0 ? "green": "yellow") ">
+        <span class="absolute top-0 right-2 font-medium	">
+          @calendarDates[i]
+        </span>
+
+        <p class="font-bold">
+          @(i + 1)
+        </p>
+      </div>
+    }
+
+  </div>
+</div>
+
+</div>
+
+<script>
+  const calendarDates = document.querySelectorAll(".calendar-date");
+
+  for (let i = 0; i < calendarDates.length; ++i) {
+    calendarDates[i].addEventListener("click", () => {
+      const date = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${i + 1}`;
+      window.location.href = `${window.location.origin}/routes?searchString=${date}`;
+      console.log(date, window.location.path);
+    });
+  }
+</script>
