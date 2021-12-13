@@ -1,8 +1,8 @@
 @model AAOAdmin.Models.LoginModel
 
 @{
-  ViewData["Title"] = "Login Page";
-  Layout = "";
+    ViewData["Title"] = "Login Page";
+    Layout = "";
 }
 
 <link href="~/css/login.css" rel="stylesheet" />
@@ -14,19 +14,21 @@
 <h2 class="companyName">Alex Andersen</h2>
 <h1 class="appName">Afløser app</h1>
 <div class="login-container">
-    @using (Html.BeginForm()) { @Html.ValidationSummary(true)
+    @using (Html.BeginForm())
+    { 
+        @Html.ValidationSummary(true)
 
-    <div style="margin: auto; display: flex; justify-content: center; flex-direction: column; width: 20%">
-        @Html.LabelFor(model => model.UserEmail) @Html.EditorFor(model => model.UserEmail)
-        <div style="height: 20px">@Html.ValidationMessageFor(model => model.UserEmail)</div>
+        <div style="margin: auto; display: flex; justify-content: center; flex-direction: column; width: 20%">
+            @Html.LabelFor(model => model.UserEmail) @Html.EditorFor(model => model.UserEmail)
+            <div style="height: 20px">@Html.ValidationMessageFor(model => model.UserEmail)</div>
 
-        @Html.LabelFor(model => model.UserPassword) @Html.EditorFor(model => model.UserPassword)
-        <div style="height: 20px">@Html.ValidationMessageFor(model => model.UserPassword)</div>
+            @Html.LabelFor(model => model.UserPassword) @Html.EditorFor(model => model.UserPassword)
+            <div style="height: 20px">@Html.ValidationMessageFor(model => model.UserPassword)</div>
 
-        <div style="display: flex">
-            <input class="knap1" type="submit" value="Log ind" />
-            <input class="knap2" type="submit" value="Hjælp" />
+            <div style="display: flex">
+                <input class="knap1" type="submit" value="Log ind" />
+                <input class="knap2" type="submit" value="Hjælp" />
+            </div>
         </div>
-    </div>
     }
 </div>

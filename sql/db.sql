@@ -247,3 +247,23 @@ FROM Users
     INNER JOIN Locations ON DriverInformation.LocationId = Locations.LocationId
     INNER JOIN Cities ON Locations.CityId = Cities.CityId
     INNER JOIN Countries ON Cities.CountryId = Countries.CountryId;
+SELECT Users.UserId,
+    Users.UserFullName,
+    Users.UserPhoneNumber,
+    Users.UserEmail,
+    DriversAvailable.DriversAvailableDate,
+    CONCAT (
+        Locations.LocationAddress,
+        ', ',
+        Locations.LocationPostalCode,
+        ' ',
+        Cities.CityName,
+        ', ',
+        Countries.CountryName
+    ) AS [Location]
+FROM Users
+    INNER JOIN DriversAvailable ON Users.UserId = DriversAvailable.UserId
+    LEFT JOIN DriverInformation ON Users.UserId = DriverInformation.UserId
+    INNER JOIN Locations ON DriverInformation.LocationId = Locations.LocationId
+    INNER JOIN Cities ON Locations.CityId = Cities.CityId
+    INNER JOIN Countries ON Cities.CountryId = Countries.CountryId;

@@ -2,7 +2,6 @@ namespace AAOAdmin.Controllers
 {
     using AAOAdmin.Models;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
     using System;
     using System.Linq;
 
