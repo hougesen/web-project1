@@ -50,7 +50,6 @@ html {
 }
 
 .sidebar h3 {
-    font-family: 'Open Sans', sans-serif;
     text-align: center;
     font-weight: bolder;
 }
@@ -68,7 +67,6 @@ html {
     color: black;
     padding: 16px;
     text-decoration: none;
-    font-family: 'Open Sans', sans-serif;
     font-size: 20px;
 }
 
