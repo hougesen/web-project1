@@ -73,7 +73,6 @@ namespace AAOAdmin.Controllers
         }
         public IActionResult Index()
         {
-            //using (AAOContext db = new AAOContext())
             {
                 var list = _context.DriversAvailables
                   .Include(u => u.User)
@@ -90,9 +89,6 @@ namespace AAOAdmin.Controllers
                   .Include(r => r.RouteEndLocation)
                   .Include(r => r.RouteStartLocation)
                   .Include(r => r.RouteStatus).Where(s => s.RouteStatusId == 1)
-
-                  //.Include(r => r.RouteStartLocation)
-                  //.Include(r => r.RouteEndLocation)
                   .ToList();
                 return View(list);
             }
