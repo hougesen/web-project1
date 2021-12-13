@@ -86,34 +86,30 @@ CREATE TABLE Routes (
     RouteEndLocationId INT,
     RouteHighPriority BIT,
     RouteStatusId INT,
-    DriverId INT NULL,
+    UserId INT NULL,
     DepartmentId INT,
     RouteEstTime INT,
     PRIMARY KEY (RouteId),
-    FOREIGN KEY (DriverId) REFERENCES Users(UserId),
+    FOREIGN KEY (UserId) REFERENCES Users(UserId),
     FOREIGN KEY (RouteStatusId) REFERENCES RouteStatus(RouteStatusId),
     FOREIGN KEY (RouteStartLocationId) REFERENCES Locations(LocationId),
     FOREIGN KEY (RouteEndLocationId) REFERENCES Locations(LocationId),
     FOREIGN KEY (DepartmentId) REFERENCES Departments(DepartmentId)
 );
-
 CREATE TABLE DriversAvailable (
-    DriversAvailableId INT IDENTITY(1,1),
+    DriversAvailableId INT IDENTITY(1, 1),
     UserId INT NOT NULL,
     DriversAvailableDate DATE NOT NULL,
-    PRIMARY KEY (DriversAvailableId),  
+    PRIMARY KEY (DriversAvailableId),
     FOREIGN KEY (UserId) REFERENCES Users(UserId)
-); 
-
+);
 CREATE TABLE SignUpDrivers (
     UserId INT NOT NULL,
     RouteId INT NOT NULL,
-    PRIMARY KEY (UserId,RouteId),
+    PRIMARY KEY (UserId, RouteId),
     FOREIGN KEY (UserId) REFERENCES Users(UserId),
     FOREIGN KEY (RouteId) REFERENCES Routes(RouteId)
 );
-
-
 -- Dummy data 
 -- UserTypes
 INSERT INTO UserTypes
@@ -221,33 +217,33 @@ VALUES (
         1,
         8
     );
-
 --DriversAvailable--
 INSERT INTO DriversAvailable
 VALUES (1, CURRENT_TIMESTAMP);
-
 --SignUpDrivers--
 INSERT INTO SignUpDrivers
-VALUES (1,1);
-
+VALUES (1, 1);
 --DriversInfo--
-INSERT INTO DriverInformation (UserId, LocationId) VALUES (6, 1);
-
-
+INSERT INTO DriverInformation (UserId, LocationId)
+VALUES (1, 1);
 -- DriversAvailable info --
-SELECT Users.UserId, Users.UserFullName, 
-Users.UserPhoneNumber, 
-Users.UserEmail, 
-DriversAvailable.DriversAvailableDate, 
-CONCAT (Locations.LocationAddress, ', ', Locations.LocationPostalCode, ' ', Cities.CityName, ', ', Countries.CountryName) AS [Location]
+SELECT Users.UserId,
+    Users.UserFullName,
+    Users.UserPhoneNumber,
+    Users.UserEmail,
+    DriversAvailable.DriversAvailableDate,
+    CONCAT (
+        Locations.LocationAddress,
+        ', ',
+        Locations.LocationPostalCode,
+        ' ',
+        Cities.CityName,
+        ', ',
+        Countries.CountryName
+    ) AS [Location]
 FROM Users
-INNER JOIN DriversAvailable
-ON Users.UserId = DriversAvailable.UserId
-LEFT JOIN DriverInformation
-ON Users.UserId = DriverInformation.UserId
-INNER JOIN Locations
-ON DriverInformation.LocationId = Locations.LocationId
-INNER JOIN Cities
-ON Locations.CityId = Cities.CityId
-INNER JOIN Countries
-ON Cities.CountryId = Countries.CountryId;
+    INNER JOIN DriversAvailable ON Users.UserId = DriversAvailable.UserId
+    LEFT JOIN DriverInformation ON Users.UserId = DriverInformation.UserId
+    INNER JOIN Locations ON DriverInformation.LocationId = Locations.LocationId
+    INNER JOIN Cities ON Locations.CityId = Cities.CityId
+    INNER JOIN Countries ON Cities.CountryId = Countries.CountryId;
