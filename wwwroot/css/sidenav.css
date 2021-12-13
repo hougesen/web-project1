@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 
 * {
     margin: 0;
@@ -23,7 +23,7 @@ html {
 
 body,
 html {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     height: 100%;
     padding-top: 0;
     width: 100%;
@@ -50,7 +50,7 @@ html {
 }
 
 .sidebar h3 {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
     font-weight: bolder;
 }
@@ -68,7 +68,7 @@ html {
     color: black;
     padding: 16px;
     text-decoration: none;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 20px;
 }
 
@@ -96,69 +96,10 @@ html {
     padding-right: 4vw;
 }
 
-.page-wrapper {
-    width: 100vw;
-    display: flex;
-}
-
-.sidebar {
-    width: 18em;
-    max-width: 35vw;
-    background-color: white;
-    height: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    box-shadow: -13px 0 20px 5px #555;
-}
-
-.sidebar .nav-menu {
-    padding-top: 10px;
-}
-
-.sidebar h3 {
-    font-family: 'Raleway', sans-serif;
-    text-align: center;
-    font-weight: bolder;
-}
-
-.sidebar .aao-logo {
-    width: 8em;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 6vh;
-}
-
-.sidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
-    font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-}
-
-.sidebar i {
-    padding-left: 10px;
-    padding-right: 10px;
-}
 
 .sidebar .arrow-align-right {
     display: flex;
     justify-content: space-between;
-}
-
-.sidebar a.active {
-    color: #00904a;
-}
-
-.sidebar a:hover:not(.active) {
-    color: #00904a;
-}
-
-.render-body {
-    padding-left: 4vw;
 }
 
 #topnav {
@@ -176,8 +117,3 @@ html {
     padding-right: 2vw;
 }
 
-#topnav #nav-login {
-    color: white;
-    font-size: 20px;
-    padding-right: 2vw;
-}
