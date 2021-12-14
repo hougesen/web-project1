@@ -124,11 +124,6 @@
 </div>
 
 <script>
-
-  fetch('https://localhost:44389/api/routesapi/')
-    .then(response => response.json())
-    .then(data => console.log(data));
-
   let userId = null;
   // Get the modal
   let modal = document.getElementById("myModal");
@@ -166,7 +161,7 @@
 
     if (routeId && userId) {
 
-      const response = await fetch(`https://localhost:44389/api/routesapi/${routeId}/${userId}`, { method: "PUT" })
+      const response = await fetch(`/api/routes/${routeId}/${userId}`, { method: "PUT" })
         .then(response => response.json())
       console.log(response)
 

@@ -1,73 +1,64 @@
 @page
-@using AAOAdmin.Models
 @using static AAOAdmin.Controllers.DashboardController
-@using System
-@using System.Collections
 
 @{
-  int[] calendarDates = CalendarDates();
   int routesMissingDrivers = GetRoutesMissingDrivers();
   int routesThisWeek = GetRoutesThisWeek();
   int availableDriversThisWeek = GetAvailableDriversThisWeek();
 }
 
-<div class="grid grid-cols-2 gap-4">
+<div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
 
-  <div class="grid grid-cols-3 grid-rows-3 gap-4 ">
-    <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col ">
-      <h3 class="font-bold text-2xl	">
+  <div class="grid grid-cols-3 grid-rows-3 gap-4">
+    <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col">
+      <h3 class="font-bold text-2xl">
         @routesThisWeek
       </h3>
 
       <h3 class="text-xl">Ruter denne uge</h3>
     </div>
 
-    <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col ">
-      <h3 class="font-bold text-2xl	">
+    <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col">
+      <h3 class="font-bold text-2xl">
         @routesMissingDrivers
       </h3>
 
       <h3 class="text-xl">Ruter uden chauffør</h3>
     </div>
 
-    <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col ">
-      <h3 class="font-bold text-2xl	">
+    <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col">
+      <h3 class="font-bold text-2xl">
         @availableDriversThisWeek
       </h3>
 
       <h3 class="text-xl">Ledige chauffører dage</h3>
     </div>
-
   </div>
 
-  <div class="w-100 grid grid-cols-7 gap-2 text-center	">
-    @for (int i = 0; i < calendarDates.Length; ++i)
-    {
-      <div class="calendar-date relative flex place-items-center	place-content-center w-100 p-4 rounded-full"
-      style="border:2px solid @(calendarDates[i] == 0 ? "green": "yellow") ">
-        <span class="absolute top-0 right-2 font-medium	">
-          @calendarDates[i]
-        </span>
-
-        <p class="font-bold">
-          @(i + 1)
-        </p>
-      </div>
-    }
-
+  <div id="calendar" class="w-100 grid grid-cols-7 gap-2">
+    <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+      <p>M</p>
+    </div>
+    <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+      <p>T</p>
+    </div>
+    <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+      <p>O</p>
+    </div>
+    <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+      <p>T</p>
+    </div>
+    <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+      <p>F</p>
+    </div>
+    <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+      <p>L</p>
+    </div>
+    <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+      <p>S</p>
+    </div>
   </div>
-</div>
 
 </div>
 
-<script>
-  const calendarDates = document.querySelectorAll(".calendar-date");
-
-  for (let i = 0; i < calendarDates.length; ++i) {
-    calendarDates[i].addEventListener("click", () => {
-      const date = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${i + 1}`;
-      window.location.href = `${window.location.origin}/routes?searchString=${date}`;
-      console.log(date, window.location.path);
-    });
-  }
-</script>
+<script src="~/js/routeCalendar.js"></script>
