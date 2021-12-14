@@ -37,7 +37,7 @@ namespace AAOAdmin.Controllers
                     int date_index = Int32.Parse(route.RouteStartDate.ToString().Substring(0, 2));
                     if (date_index >= 0)
                     {
-                        calendar_dates[date_index] += 1;
+                        calendar_dates[date_index - 1] += 1;
                     }
                 }
             }
