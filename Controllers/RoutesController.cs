@@ -59,8 +59,8 @@ namespace AAOAdmin.Controllers
                         route = route.OrderByDescending(s => s.RouteEndDate);
                         break;
                     default:
-
-                        break;
+                        route = route.OrderBy(s => s.RouteStartDate);
+                    break;
                 }
                 return View(await route.AsNoTracking().ToListAsync());
             }

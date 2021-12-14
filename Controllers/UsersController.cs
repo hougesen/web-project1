@@ -53,6 +53,7 @@ namespace AAOAdmin.Controllers
                         list = list.OrderByDescending(s => s.DriversAvailableDate);
                         break;
                     default:
+                        list = list.OrderBy(s => s.DriversAvailableDate);
                         break;
                 }
                 ViewData["Routes"] = _context.Routes
