@@ -23,3 +23,8 @@ tr:nth-child(even) {
 tr:hover {
     background-color: #a2ad9c;
 }
+
+
+.searchdate {
+    outline: #888 1px solid;
+}
