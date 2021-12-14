@@ -4,6 +4,51 @@
     ViewData["Title"] = "Edit";
 }
 
+
+<style>
+
+    .form-group {
+    display: grid;
+    background-color: #0000000f;
+    margin: 15px 0px;
+    width: 400px;
+    padding: 5px 10px 10px 10px;
+    border-radius: 3px;
+}
+
+div > a:hover {
+    font-weight: bold;
+}
+
+input {
+    padding: 5px 5px;
+    border-radius: 3px;
+}
+
+label.control-label {
+    font-weight: bold;
+}
+
+select {
+    border-radius: 3px;
+}
+
+input.btn.btn-primary {
+    height: 30px;
+    cursor: pointer;
+}
+
+div#last {
+    background-color: #00904a;
+    color: white;
+    cursor: pointer;
+}
+
+</style>
+
+
+
+
 <h1>Rediger tur</h1>
 
 <div class="row">
@@ -63,7 +108,7 @@
                 <input asp-for="RouteEstTime" class="form-control" />
                 <span asp-validation-for="RouteEstTime" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="last">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
