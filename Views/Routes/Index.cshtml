@@ -16,6 +16,7 @@
             <th>Slut lokation</th>
             <th>Status</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -31,11 +32,16 @@
                 <td>@Html.DisplayFor(modelItem => item.RouteStatus.RouteStatusName)</td>
 
                 <td>
-                    <div style="display:flex;"><a asp-action="Edit" asp-route-id="@item.RouteId"
-                        class="edit-btn">Rediger</a></div>
-                    <!--<a asp-action="Details" asp-route-id="@item.RouteId">Details</a> |
-                          <a asp-action="Delete" asp-route-id="@item.RouteId">Delete</a> -->
-            </td>
+                    <div style="display:flex;">
+                        <a asp-action="Edit" asp-route-id="@item.RouteId"
+                           class="edit-btn">Rediger</a>
+                    </div>
+                </td>
+                <td>
+                    <div style="display:flex;">
+                         <a asp-action="Delete" asp-route-id="@item.RouteId" class="del-btn">Slet</a>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
