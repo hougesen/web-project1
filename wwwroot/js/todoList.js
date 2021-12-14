@@ -31,8 +31,8 @@ function displayTodo() {
     todoArray.forEach((list, ind) => {
         htmlCode += `<div class='flex mb-4 items-center'>
                         <p class='w-full text-grey-darkest'>${list}</p>
-                        <button onclick='edit(${ind})' class='flex-no-shrink px-3 py-1 ml-4 mr-2 border-2 rounded text-white text-grey bg-[#888]'>Rediger</button>
-                        <button onclick='deleteTodo(${ind})' class='flex-no-shrink px-3 py-1 ml-2 border-2 rounded text-white bg-red-500'>Slet</button>
+                        <button onclick='edit(${ind})' class='flex-no-shrink px-3 py-1 ml-4 mr-2 rounded text-white text-grey bg-[#888]'><i class="far fa-edit"></i></button>
+                        <button onclick='deleteTodo(${ind})' class='flex-no-shrink px-3 py-1 ml-2 rounded text-white bg-red-500'><i class="fas fa-minus text-[14px]"></i></button>
                         </div>`;
     });
     listBox.innerHTML = htmlCode;
