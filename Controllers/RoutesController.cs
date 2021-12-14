@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System;
 using System.Threading.Tasks;
 
 namespace AAOAdmin.Controllers
@@ -17,11 +18,60 @@ namespace AAOAdmin.Controllers
         }
 
         // GET: Routes
-        public async Task<IActionResult> Index()
+        /*public async Task<IActionResult> Index()
         {
-            var aAOContext = _context.Routes.Include(r => r.Department).Include(r => r.User).Include(r => r.RouteEndLocation).Include(r => r.RouteStartLocation).Include(r => r.RouteStatus);
+            var aAOContext = _context.Routes
             return View(await aAOContext.ToListAsync());
-        }
+        }*/
+
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        {
+            ViewData["StartDateSortParm"] = sortOrder == "SDate" ? "Sdate_desc" : "SDate";
+            ViewData["EndDateSortParm"] = sortOrder == "EDate" ? "Edate_desc" : "EDate";
+            ViewData["CurrentFilter"] = searchString;
+
+            var route = from s in _context.Routes select s;
+            route = route.Include(r => r.Department)
+                         .Include(r => r.User)
+                         .Include(r => r.RouteEndLocation)
+                         .Include(r => r.RouteStartLocation)
+                         .Include(r => r.RouteStatus);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var date = DateTime.Parse(searchString);
+                var test = date.AddDays(1).AddSeconds(-1);
+                /*var dateAndTime = DateTime.Now;
+                var date = dateAndTime.Date;*/
+                route = route.Where(s => s.RouteStartDate <= test && s.RouteStartDate >= date);
+            }
+                switch (sortOrder)
+                {
+                    case "SDate":
+                        route = route.OrderBy(s => s.RouteStartDate);
+                        break;
+                    case "Sdate_desc":
+                        route = route.OrderByDescending(s => s.RouteStartDate);
+                        break;
+                    case "EDate":
+                        route = route.OrderBy(s => s.RouteEndDate);
+                        break;
+                    case "Edate_desc":
+                        route = route.OrderByDescending(s => s.RouteEndDate);
+                        break;
+                    default:
+
+                        break;
+                }
+                return View(await route.AsNoTracking().ToListAsync());
+            }
+        
+
+
+
+
+
+
+
 
         // GET: Routes/Details/5
         public async Task<IActionResult> Details(int? id)
