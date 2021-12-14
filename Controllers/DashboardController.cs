@@ -26,7 +26,7 @@ namespace AAOAdmin.Controllers
             var firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddSeconds(-1);
             AAOContext _context = new AAOContext();
-            var routes = _context.Routes.Where(r => r.RouteStartDate >= firstDayOfMonth && r.RouteStartDate <= lastDayOfMonth && r.RouteStatusId == null);
+            var routes = _context.Routes.Where(r => r.RouteStartDate >= firstDayOfMonth && r.RouteStartDate <= lastDayOfMonth);
             int daysInMonth = Int32.Parse(lastDayOfMonth.ToShortDateString().Substring(0, 2));
             int[] calendar_dates = new int[daysInMonth];
 
@@ -48,7 +48,7 @@ namespace AAOAdmin.Controllers
         public static int GetRoutesMissingDrivers()
         {
             AAOContext _context = new AAOContext();
-            int routes = _context.Routes.Where((r) => r.RouteStatusId == null && r.RouteStartDate >= DateTime.Now).Count();
+            int routes = _context.Routes.Where((r) => r.UserId == null && r.RouteStartDate >= DateTime.Now).Count();
             return routes;
         }
 
