@@ -149,7 +149,6 @@ namespace AAOAdmin.Controllers
 
             var route = await _context.Routes
                 .Include(r => r.Department)
-                .Include(r => r.UserId)
                 .Include(r => r.RouteEndLocation)
                 .Include(r => r.RouteStartLocation)
                 .Include(r => r.RouteStatus)
