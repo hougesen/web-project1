@@ -2,6 +2,7 @@
 @using static AAOAdmin.Controllers.DashboardController
 
 @{
+    ViewData["Title"] = "Dashboard";
     int routesMissingDrivers = GetRoutesMissingDrivers();
     int routesThisWeek = GetRoutesThisWeek();
     int availableDriversThisWeek = GetAvailableDriversThisWeek();
