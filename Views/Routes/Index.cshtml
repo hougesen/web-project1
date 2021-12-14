@@ -4,12 +4,22 @@
     ViewData["Title"] = "Ture";
 }
 <h1>Ture</h1>
-
+<br>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Søg start dato: <input type="date" class="searchdate" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Søg" class="btn btn-default" /> |
+            <a asp-action="Index">Ryd filtre</a>
+        </p>
+    </div>
+</form>
+<br>
 <table class="table">
     <thead>
         <tr>
-            <th>Startdato</th>
-            <th>Slutdato</th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["StartDateSortParm"]"style="text-decoration:underline;">Startdato</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["EndDateSortParm"]"style="text-decoration:underline;">Slutdato</a></th>
             <th>Varighed</th>
             <th>Afdeling</th>
             <th>Start lokation</th>
