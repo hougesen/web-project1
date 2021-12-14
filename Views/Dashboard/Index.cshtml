@@ -1,17 +1,15 @@
-@page
+@model AAOAdmin.Controllers.DashboardController
 @using static AAOAdmin.Controllers.DashboardController
 
 @{
+    ViewData["Title"] = "Dashboard";
     int routesMissingDrivers = GetRoutesMissingDrivers();
     int routesThisWeek = GetRoutesThisWeek();
     int availableDriversThisWeek = GetAvailableDriversThisWeek();
 }
 
 <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
-
-    <div class=" ">
-
-
+    <div>
         <div class="grid grid-cols-3 gap-6 px-5">
             <div class="w-100 h-100 bg-slate-200 rounded-xl text-center flex place-content-center flex-col p-4">
                 <h3 class="font-bold text-2xl">
@@ -44,10 +42,15 @@
                         To-do liste
                     </h1>
                     <div class="flex mt-4">
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" name="text" id="text" placeholder="Tilføj en to-do task" />
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+                            name="text" id="text" placeholder="Tilføj en to-do task" />
                         <input type="hidden" id="saveIndex" />
-                        <button class="p-2 lg:px-4 md:mx-2 text-center border border-solid border-[#00904a] rounded text-white bg-[#00904a] transition-colors duration-300 mt-1 md:mt-0 md:ml-1" id="add-task-btn">Tilføj</button>
-                        <button class="p-2 lg:px-4 md:mx-2 text-center border border-solid border-[#888] rounded bg-[#888] text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1" style="display: none" id="save-todo-btn">Rediger</button>
+                        <button
+                            class="p-2 lg:px-4 md:mx-2 text-center border border-solid border-[#00904a] rounded text-white bg-[#00904a] transition-colors duration-300 mt-1 md:mt-0 md:ml-1"
+                            id="add-task-btn">Tilføj</button>
+                        <button
+                            class="p-2 lg:px-4 md:mx-2 text-center border border-solid border-[#888] rounded bg-[#888] text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1"
+                            style="display: none" id="save-todo-btn">Rediger</button>
                     </div>
                 </div>
                 <div id="listBox"></div>
@@ -56,25 +59,32 @@
     </div>
 
     <div id="calendar" class="w-100 grid grid-cols-7 gap-2">
-        <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+        <div
+            class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
             <p>M</p>
         </div>
-        <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+        <div
+            class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
             <p>T</p>
         </div>
-        <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+        <div
+            class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
             <p>O</p>
         </div>
-        <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+        <div
+            class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
             <p>T</p>
         </div>
-        <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+        <div
+            class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
             <p>F</p>
         </div>
-        <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+        <div
+            class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
             <p>L</p>
         </div>
-        <div class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
+        <div
+            class="p-4 border-slate-200 border-solid border-2 rounded-xl text-center flex place-content-center flex-col">
             <p>S</p>
         </div>
 
