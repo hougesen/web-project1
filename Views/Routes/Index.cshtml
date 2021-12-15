@@ -3,12 +3,16 @@
 @{
     ViewData["Title"] = "Ture";
 }
+
+<script src="~/js/driverRequestModal.js"></script>
+
 <h1>Ture</h1>
 <br>
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Søg start dato: <input type="date" class="searchdate" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            Søg start dato: <input type="date" class="searchdate" name="SearchString"
+                value="@ViewData["CurrentFilter"]" />
             <input type="submit" value="Søg" class="btn btn-default" /> |
             <a asp-action="Index">Ryd filtre</a>
         </p>
@@ -18,13 +22,16 @@
 <table class="table">
     <thead>
         <tr>
-            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["StartDateSortParm"]"style="text-decoration:underline;">Startdato</a></th>
-            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["EndDateSortParm"]"style="text-decoration:underline;">Slutdato</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["StartDateSortParm"]"
+                    style="text-decoration:underline;">Startdato</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["EndDateSortParm"]"
+                    style="text-decoration:underline;">Slutdato</a></th>
             <th>Varighed</th>
             <th>Afdeling</th>
             <th>Start lokation</th>
             <th>Slut lokation</th>
             <th>Status</th>
+            <th></th>
             <th></th>
             <th></th>
         </tr>
@@ -42,17 +49,45 @@
                 <td>@Html.DisplayFor(modelItem => item.RouteStatus.RouteStatusName)</td>
 
                 <td>
-                    <div style="display:flex;">
-                        <a asp-action="Edit" asp-route-id="@item.RouteId"
-                           class="edit-btn">Rediger</a>
+                    @if (item.UserId == null)
+                    {
+                        <div class="flex">
+                            <button class="edit-btn bg-[#00904a]" onclick="generateRequestModal(@item.RouteId)">
+                                Tildel tur
+                            </button>
+                        </div>
+                    }
+                </td>
+                <td>
+                    <div class="flex">
+                        <a asp-action="Edit" asp-route-id="@item.RouteId" class="edit-btn">Rediger</a>
                     </div>
                 </td>
                 <td>
-                    <div style="display:flex;">
-                         <a asp-action="Delete" asp-route-id="@item.RouteId" class="del-btn">Slet</a>
+                    <div class="flex">
+                        <a asp-action="Delete" asp-route-id="@item.RouteId" class="del-btn">Slet</a>
                     </div>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+
+<div id="req-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeRequestsModal()">&times;</span>
+        <table class="table" id="">
+            <thead>
+                <tr>
+                    <th>Navn</th>
+                    <th>Telefon nummer</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="req-modal-body">
+            </tbody>
+        </table>
+    </div>
+</div>

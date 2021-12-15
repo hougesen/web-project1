@@ -126,5 +126,24 @@ namespace AAOAdmin.Controllers
 
             return new JsonResult(calendar_dates);
         }
+
+        // GET: api/routes/request/1
+        [HttpGet("request/{routeId}")]
+        public async Task<IActionResult> DriveRequests(int routeId)
+        {
+            var requestsToDrive = await _context.SignUpDrivers.Include(s => s.User).Where(s => s.RouteId == routeId).Select(
+                p => new DriveRequest()
+                {
+                    UserId = p.UserId,
+                    RouteId = p.RouteId,
+                    Name = p.User.UserFullName,
+                    Email = p.User.UserEmail,
+                    PhoneNumber = p.User.UserPhoneNumber
+                }
+            ).ToListAsync();
+
+
+            return new JsonResult(requestsToDrive);
+        }
     }
 }
