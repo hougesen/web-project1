@@ -110,17 +110,18 @@ namespace AAOAdmin.Controllers
             DateTime firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
             DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddSeconds(-1);
             var routes = await _context.Routes.Where(r => r.RouteStartDate >= firstDayOfMonth && r.RouteStartDate <= lastDayOfMonth).ToListAsync();
-            int daysInMonth = Int32.Parse(lastDayOfMonth.ToShortDateString().Substring(0, 2));
-            int[] calendar_dates = new int[daysInMonth];
+
+            int[] calendar_dates = new int[lastDayOfMonth.Day];
 
             foreach (Route route in routes)
             {
                 if (route.RouteStartDate != null)
                 {
-                    int date_index = Int32.Parse(route.RouteStartDate.ToString().Substring(0, 2));
-                    if (date_index >= 0)
+                    int date = route.RouteStartDate.GetValueOrDefault().Day;
+
+                    if (date >= 0)
                     {
-                        calendar_dates[date_index - 1] += 1;
+                        calendar_dates[date - 1] += 1;
                     }
                 }
             }
