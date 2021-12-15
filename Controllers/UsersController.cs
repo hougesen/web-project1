@@ -34,8 +34,8 @@ namespace AAOAdmin.Controllers
                  .ThenInclude(l => l.City)
                  .ThenInclude(c => c.Country)
                  .Include(r => r.User.Routes);
-                    if (!String.IsNullOrEmpty(searchString))
-                     {
+                if (!String.IsNullOrEmpty(searchString))
+                {
                     var date = DateTime.Parse(searchString);
                     var test = date.AddDays(1).AddSeconds(-1);
                     list = list.Where(s => s.DriversAvailableDate <= test && s.DriversAvailableDate >= date);
