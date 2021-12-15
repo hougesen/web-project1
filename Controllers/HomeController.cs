@@ -54,8 +54,6 @@ namespace AAOAdmin.Controllers
                             }).ToList();
                 if (user.FirstOrDefault() != null)
                 {
-                    /* Session["UserEmail"] = user.FirstOrDefault().UserEmail;
-                     Session["UserID"] = user.FirstOrDefault().UserId;*/
                     return Redirect("/dashboard");
                 }
                 else

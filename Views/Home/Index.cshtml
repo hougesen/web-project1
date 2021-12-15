@@ -15,7 +15,7 @@
 <h1 class="appName">Afløser app</h1>
 <div class="login-container">
     @using (Html.BeginForm())
-    { 
+    {
         @Html.ValidationSummary(true)
 
         <div style="margin: auto; display: flex; justify-content: center; flex-direction: column; width: 20%">
@@ -27,7 +27,6 @@
 
             <div style="display: flex">
                 <input class="knap1" type="submit" value="Log ind" />
-                @* <input class="knap2" type="submit" value="Hjælp" /> *@
             </div>
         </div>
     }

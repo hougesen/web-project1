@@ -12,7 +12,6 @@ async function fetchRequestToDrive(routeId) {
 }
 
 async function generateRequestModal(routeId) {
-    document.querySelector('#req-modal').style.display = 'block';
     const driveRequests = await fetchRequestToDrive(routeId);
 
     const modalBody = document.querySelector('#req-modal-body');
@@ -46,6 +45,8 @@ async function generateRequestModal(routeId) {
 
         modalBody.appendChild(para);
     }
+
+    document.querySelector('#req-modal').style.display = 'block';
 }
 
 async function assignUserToRoute(routeId, userId) {
@@ -60,7 +61,6 @@ async function assignUserToRoute(routeId, userId) {
 }
 
 function closeRequestsModal() {
-    console.log('closeRequestsModal');
     document.querySelector('#req-modal').style.display = null;
     const modalBody = document.querySelector('#req-modal-body');
 

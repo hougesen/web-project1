@@ -41,13 +41,14 @@ namespace AAOAdmin.Controllers
         }
 
         // Updates userid in routes table with onclick and saves in database
-        // PUT: api/routes/5
+        // PUT: api/routes/5/1
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}/{userId}")]
-        public async Task<IActionResult> PutRoute(int id, int userId)
+        [HttpPut("{routeId}/{userId}")]
+        public async Task<IActionResult> PutRoute(int routeId, int userId)
         {
-            var route = await _context.Routes.FindAsync(id);
+            var route = await _context.Routes.FindAsync(routeId);
             route.UserId = userId;
+            // status: pending
             route.RouteStatusId = 2;
             _context.Entry(route).State = EntityState.Modified;
             try
@@ -56,7 +57,7 @@ namespace AAOAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RouteExists(id))
+                if (!RouteExists(routeId))
                 {
                     return NotFound();
                 }
@@ -141,7 +142,6 @@ namespace AAOAdmin.Controllers
                     PhoneNumber = p.User.UserPhoneNumber
                 }
             ).ToListAsync();
-
 
             return new JsonResult(requestsToDrive);
         }

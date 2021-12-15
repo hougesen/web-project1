@@ -68,7 +68,6 @@
                     OnClientClick="return false;" id="myBtn">
                         Tildel tur
                     </button>
-
                 </td>
             </tr>
         }
@@ -99,9 +98,7 @@
                     <th>
                         Status
                     </th>
-                    <th>
-
-                    </th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -141,9 +138,6 @@
     // Get the modal
     let modal = document.getElementById("myModal");
 
-    // Get the button that opens the modal
-    let btn = document.querySelectorAll("#myBtn");
-
     // Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];
 
@@ -174,7 +168,6 @@
         if (routeId && userId) {
             const response = await fetch(`/api/routes/${routeId}/${userId}`, { method: "PUT" })
                 .then(response => response.json())
-            console.log(response)
 
             window.alert("Chaufføren fik tildelt ruten");
             window.location.reload();

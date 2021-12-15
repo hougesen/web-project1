@@ -11,7 +11,7 @@ async function fetchRoutesByDay() {
 }
 
 /**
- * @summary gets the monday closest to the 1. of this month
+ * @summary looks back to the monday closest to the 1. of this month.
  * @param {Date} date
  * @returns {Date}
  */
@@ -35,11 +35,11 @@ async function generateCalendar() {
     let endDate = new Date(
         new Date(new Date(new Date().setMonth(new Date().getMonth() + 1)).setDate(0)).setHours(23, 59, 59, 59),
     );
-
+    // Checks whether the days between startDate and endDate modulus 7 gives 0
     const timeBetween = (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
     endDate = new Date(endDate.setDate(endDate.getDate() + Math.round(7 - (timeBetween % 7))));
-    const calendar = document.querySelector('#calendar');
 
+    const calendar = document.querySelector('#calendar');
     const dateClasses = ['p-4', 'bg-slate-200', 'rounded-xl', 'flex', 'flex-col', 'cursor-pointer'];
 
     let i = 0;
@@ -52,6 +52,8 @@ async function generateCalendar() {
         const currentDate = document.createTextNode(iDate.getDate());
 
         const placeholderDate = new Date(iDate);
+
+        // Redirect to routes on click
         dateWrapper.addEventListener('click', () => {
             window.location.href = `${window.location.origin}/routes?searchString=${placeholderDate.getFullYear()}-${
                 placeholderDate.getMonth() + 1
@@ -62,6 +64,7 @@ async function generateCalendar() {
         dateWrapper.appendChild(datePara);
 
         if (iDate.getMonth() === new Date().getMonth()) {
+            // Insert amount of routes on the given day
             const routeCountHeading = document.createElement('h3');
             routeCountHeading.classList.add(...['font-bold', 'text-lg']);
 
