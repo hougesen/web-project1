@@ -67,18 +67,6 @@ namespace AAOAdmin.Controllers
             }
         }
 
-        // Assigns a route to a driver
-        public static int AssignRoute(int routeId, int userId)
-        {
-            //var _context = new AAOContext();
-            //var route = _context.Routes.Where(r => r.RouteId == routeId).FirstOrDefault();
-            //route.DriverId = userId;
-            //route.RouteStatusId = 2;
-            //_context.Update(route);
-            //_context.SaveChanges();
-            return routeId + userId;
-        }
-
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
         {
