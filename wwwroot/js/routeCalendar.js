@@ -28,7 +28,6 @@ function getMondayClosest(date = null) {
 }
 
 async function generateCalendar() {
-    // number[]
     const routeCountArr = await fetchRoutesByDay();
 
     const startDate = getMondayClosest();
@@ -46,7 +45,6 @@ async function generateCalendar() {
     let i = 0;
     let iDate = new Date(startDate);
     while (iDate <= endDate) {
-        console.log(iDate, iDate.getDate(), iDate.getMonth(), iDate.getFullYear());
         const dateWrapper = document.createElement('div');
         dateWrapper.classList.add(...dateClasses);
 
