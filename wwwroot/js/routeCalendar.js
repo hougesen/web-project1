@@ -35,8 +35,9 @@ async function generateCalendar() {
     let endDate = new Date(
         new Date(new Date(new Date().setMonth(new Date().getMonth() + 1)).setDate(0)).setHours(23, 59, 59, 59),
     );
-    // Checks whether the days between startDate and endDate modulus 7 gives 0
+    // Days between startDate and endDate
     const timeBetween = (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
+    // Adds any extra days needed to make the total days mod 7 give 0 
     endDate = new Date(endDate.setDate(endDate.getDate() + Math.round(7 - (timeBetween % 7))));
 
     const calendar = document.querySelector('#calendar');
