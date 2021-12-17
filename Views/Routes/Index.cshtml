@@ -11,7 +11,7 @@
 <form asp-action="Index" method="get">
     <div>
         <p>
-            Søg start dato: <input type="date" class="searchdate" name="SearchString"
+            Søg start dato: <input type="date" class="outline outline-1 outline-gray-300" name="SearchString"
                 value="@ViewData["CurrentFilter"]" />
             <input type="submit" value="Søg" class="btn btn-default" /> |
             <a asp-action="Index">Ryd filtre</a>
@@ -52,7 +52,9 @@
                     @if (item.UserId == null)
                     {
                         <div class="flex">
-                            <button class="edit-btn bg-[#00904a]" onclick="generateRequestModal(@item.RouteId)">
+                            <button
+                        class="text-base block m-auto text-white border-none cursor-pointer rounded-sm no-underline py-2 px-4 bg-[#00904a]"
+                        onclick="generateRequestModal(@item.RouteId)">
                                 Tildel tur
                             </button>
                         </div>
@@ -60,7 +62,8 @@
                 </td>
                 <td>
                     <div class="flex">
-                        <a asp-action="Edit" asp-route-id="@item.RouteId" class="edit-btn">Rediger</a>
+                        <a asp-action="Edit" asp-route-id="@item.RouteId"
+                        class="text-base block m-auto text-white border-none cursor-pointer rounded-sm no-underline py-2 px-4 bg-[#888]">Rediger</a>
                     </div>
                 </td>
                 <td>

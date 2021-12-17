@@ -11,58 +11,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/211c7f6f1f.js" crossorigin="anonymous"></script>
   <link href="~/css/site.css" rel="stylesheet" />
-  <link href="~/css/Table.css" rel="stylesheet" />
-  <link href="~/css/sidenav.css" rel="stylesheet" />
 </head>
 
 <body>
   <div class="w-full flex">
-    <div class="sidebar">
-      <a href="/dashboard/">
+    <div class="sidebar w-80 max-w-[35vw] bg-white h-full min-h-screen flex flex-col">
+      <a href="/dashboard" class="hover:text-[#00904a]">
         <img src="~/images/AAlogo.png" alt="AAO logo" class="h-auto ml-auto mr-auto pt-[6vh]" />
       </a>
       <h3>Alex Andersen Ølund</h3>
       <div class="pt-2">
-        <a href="/dashboard" class="flex justify-between">
+        <a href="/dashboard" class="block text-black p-4 no-underline text-xl hover:text-[#00904a]">
           <span>
-            <i class="fas fa-chart-line"></i>
+            <i class="px-2 fas fa-chart-line"></i>
             Dashboard
           </span>
-          <span><i class="fas fa-angle-right"></i></span>
+          <span><i class="px-2 fas fa-angle-right"></i></span>
         </a>
 
-        <a href="/routes/create" class="flex justify-between">
+        <a href="/routes/create" class="block text-black p-4 no-underline text-xl hover:text-[#00904a]">
           <span>
-            <i class="fas fa-edit"></i>
+            <i class="px-2 fas fa-edit"></i>
             Opret tur
           </span>
-          <span><i class="fas fa-angle-right"></i></span>
+          <span><i class="px-2 fas fa-angle-right"></i></span>
         </a>
 
-        <a href="/routes" class="flex justify-between">
+        <a href="/routes" class="block text-black p-4 no-underline text-xl hover:text-[#00904a]">
           <span>
-            <i class="fas fa-route"></i>
+            <i class="px-2 fas fa-route"></i>
             Ture
           </span>
-          <span><i class="fas fa-angle-right"></i></span>
+          <span><i class="px-2 fas fa-angle-right"></i></span>
         </a>
 
-        <a href="/users/" class="flex justify-between">
+        <a href="/users" class="block text-black p-4 no-underline text-xl hover:text-[#00904a]">
           <span>
-            <i class="fas fa-database"></i>
+            <i class="px-2 fas fa-database"></i>
             Chauffører
           </span>
-          <span><i class="fas fa-angle-right"></i></span>
+          <span><i class="px-2 fas fa-angle-right"></i></span>
         </a>
       </div>
     </div>
 
     <div class="w-full">
       <div id="topnav">
-        <div class="dropdown-profile">
-          <div id="nav-login" class="dropbtn">Lisbeth Kjær <i class="fa fa-fw fa-user"></i></div>
+        <div class="dropdown-profile relative inline-block">
+          <div id="nav-login" class="border-none text-white text-base">Lisbeth Kjær <i class="fa fa-fw fa-user"></i>
+          </div>
           <div class="dropdown-content">
-            <a href="/">Log ud</a>
+            <a href="/" class="text-black hover:text-white py-3 px-4 no-underline block">Log ud</a>
           </div>
         </div>
       </div>

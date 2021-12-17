@@ -1,102 +1,102 @@
 * {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 1.6;
 }
 
 *:before,
 *:after {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  line-height: 1.6;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body,
 html {
-    font-family: 'Open Sans', sans-serif;
-    height: 100%;
-    padding-top: 0;
-    width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+  padding-top: 0;
+  width: 100%;
 }
 
 .aao-logo {
-    width: 250px;
-    height: auto;
-    margin: 1rem;
+  width: 250px;
+  height: auto;
+  margin: 1rem;
 }
 
 .logo {
-    padding-top: 7rem;
-    width: 100%;
-    display: flex;
-    place-content: center;
+  padding-top: 7rem;
+  width: 100%;
+  display: flex;
+  place-content: center;
 }
 
 label {
-    display: block;
+  display: block;
 }
 
 input.knap1 {
-    background: #02904a;
-    border-radius: 3px;
-    padding: 10px 0px;
-    width: 35%;
-    color: white;
-    border: 0px;
-    box-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
-    cursor: pointer;
+  background: #02904a;
+  border-radius: 3px;
+  padding: 10px 0px;
+  width: 35%;
+  color: white;
+  border: 0px;
+  box-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
+  cursor: pointer;
 }
 
 input.knap1:hover {
-    opacity: 0.7;
-    transition: 0.3s;
+  opacity: 0.7;
+  transition: 0.3s;
 }
 
 input.knap2 {
-    margin-left: auto;
-    background: #b4b2b2;
-    border-radius: 3px;
-    width: 35%;
-    padding: 10px 0px;
-    color: white;
-    border: 0px;
-    box-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
-    cursor: pointer;
+  margin-left: auto;
+  background: #b4b2b2;
+  border-radius: 3px;
+  width: 35%;
+  padding: 10px 0px;
+  color: white;
+  border: 0px;
+  box-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
+  cursor: pointer;
 }
 
 input.knap2:hover {
-    opacity: 0.7;
-    transition: 0.3s;
+  opacity: 0.7;
+  transition: 0.3s;
 }
 
 .companyName {
-    text-align: center;
-    font-weight: 400;
+  text-align: center;
+  font-weight: 400;
 }
 
 .appName {
-    text-align: center;
+  text-align: center;
 }
 
 .login-container {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 form {
-    width: 100%;
+  width: 100%;
 }
 
 .validation-summary-errors {
-    font-size: 40px;
-    text-align: center;
-    color: deeppink;
+  font-size: 40px;
+  text-align: center;
+  color: deeppink;
 }
