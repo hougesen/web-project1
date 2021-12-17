@@ -5,116 +5,80 @@
     Layout = "_Layout";
 }
 
-<style>
-    .form {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 1rem;
-    }
-
-    .form-group {}
-
-    .form-description {
-        width: 100%;
-    }
-
-    label {
-        display: block;
-    }
-
-    input,
-    select,
-    textarea {
-        border: 1px solid #005140;
-        border-radius: 2px;
-        width: 100%;
-        padding: 0.25rem;
-        margin-bottom: 0.5rem;
-    }
-
-    button {
-        background: #00904A;
-        border-radius: 5px;
-        border: none;
-        padding: 0.5rem 1.5rem;
-        color: #fff;
-        cursor: pointer;
-        font-size: 16px;
-    }
-</style>
-
 <h1>Opret tur</h1>
 
 <div>
     <div>
-        <form asp-action="Create" class="form">
-            <div style="width: 100%">
+        <form asp-action="Create" class="w-full grid grid-cols-[1fr_2fr] gap-4">
+            <div class="w-full">
                 <div asp-validation-summary="ModelOnly"></div>
 
-                <div class="form-group">
-                    <label asp-for="RouteStartDate">Startdato</label>
-                    <input asp-for="RouteStartDate" />
+                <div>
+                    <label class="block" asp-for="RouteStartDate">Startdato</label>
+                    <input asp-for="RouteStartDate"
+                        class="border border-solid border-[#005140] rounded-sm w-full p-1 mb-2" />
                     <span asp-validation-for="RouteStartDate"></span>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="RouteEndDate">Slutdato</label>
-                    <input asp-for="RouteEndDate" />
+                <div>
+                    <label class="block" asp-for="RouteEndDate">Slutdato</label>
+                    <input asp-for="RouteEndDate"
+                        class="border border-solid border-[#005140] rounded-sm w-full p-1 mb-2" />
                     <span asp-validation-for="RouteEndDate"></span>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="RouteStartLocationId">Start lokation</label>
-                    <select asp-for="RouteStartLocationId" asp-items="ViewBag.RouteStartLocationId"></select>
+                <div>
+                    <label class="block" asp-for="RouteStartLocationId">Start lokation</label>
+                    <select asp-for="RouteStartLocationId" asp-items="ViewBag.RouteStartLocationId"
+                        class="border border-solid border-[#005140] rounded-sm w-full p-1 mb-2"></select>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="RouteEndLocationId">Slut lokation</label>
-                    <select asp-for="RouteEndLocationId" asp-items="ViewBag.RouteEndLocationId"></select>
+                <div>
+                    <label class="block" asp-for="RouteEndLocationId">Slut lokation</label>
+                    <select asp-for="RouteEndLocationId" asp-items="ViewBag.RouteEndLocationId"
+                        class="border border-solid border-[#005140] rounded-sm w-full p-1 mb-2"></select>
+
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="RouteHighPriority">Høj prioritet</label>
-                    <input asp-for="RouteHighPriority" />
+                <div>
+                    <label class="block" asp-for="RouteHighPriority">Høj prioritet</label>
+                    <input asp-for="RouteHighPriority"
+                        class="border border-solid border-[#005140] rounded-sm w-full p-1 mb-2" />
                     <span asp-validation-for="RouteHighPriority"></span>
                 </div>
             </div>
 
-            <div style="width: 100%; display:flex; flex-direction: column">
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem">
-                    <div class="form-group">
-                        <label asp-for="RouteStatusId">Status</label>
+            <div class="w-full flex flex-col">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block" asp-for="RouteStatusId">Status</label>
                         <select asp-for="RouteStatusId" asp-items="ViewBag.RouteStatusId"
-                            style="text-transform: capitalize"></select>
+                            class="capitalize border border-solid border-[#005140] rounded-sm w-full p-1 mb-2"></select>
                     </div>
 
-                    @*
-                        <div>
-                        <label asp-for="DriverId">Chaffør</label>
-                        <select asp-for="DriverId" asp-items="ViewBag.DriverId"></select>
-                        </div>
-                    *@
-
-                    <div class="form-group">
-                        <label asp-for="DepartmentId">Afdeling</label>
-                        <select asp-for="DepartmentId" asp-items="ViewBag.DepartmentId"></select>
+                    <div>
+                        <label class="block" asp-for="DepartmentId">Afdeling</label>
+                        <select asp-for="DepartmentId" asp-items="ViewBag.DepartmentId"
+                            class="border border-solid border-[#005140] rounded-sm w-full p-1 mb-2"></select>
                     </div>
 
-                    <div class="form-group">
-                        <label asp-for="RouteEstTime">Estimeret tid i timer</label>
-                        <input asp-for="RouteEstTime" />
+                    <div>
+                        <label class="block" asp-for="RouteEstTime">Estimeret tid i timer</label>
+                        <input asp-for="RouteEstTime"
+                            class="border border-solid border-[#005140] rounded-sm w-full p-1 mb-2" />
                         <span asp-validation-for="RouteEstTime"></span>
                     </div>
                 </div>
 
-                <div class="form-description form-group">
-                    <label asp-for="RouteDescription">Beskrivelse</label>
-                    <textarea asp-for="RouteDescription"></textarea>
+                <div class="w-full">
+                    <label class="block" asp-for="RouteDescription">Beskrivelse</label>
+                    <textarea asp-for="RouteDescription"
+                        class="border border-solid border-[#005140] rounded-sm p-1 mb-2 w-full"></textarea>
                     <span asp-validation-for="RouteDescription"></span>
                 </div>
 
-                <button type="submit" value="Create" class="btn ml-auto bg-[#00904a]">
+                <button type="submit" value="Create"
+                    class="bg-[#00904a] hover:bg-[#00522a] rounded-lg border-none py-2 px-4 text-white cursor-pointer block text-base ml-auto">
                     Opret tur
                 </button>
             </div>

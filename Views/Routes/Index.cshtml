@@ -9,7 +9,7 @@
 <h1>Ture</h1>
 <br>
 <form asp-action="Index" method="get">
-    <div class="form-actions no-color">
+    <div>
         <p>
             Søg start dato: <input type="date" class="searchdate" name="SearchString"
                 value="@ViewData["CurrentFilter"]" />
@@ -19,13 +19,13 @@
     </div>
 </form>
 <br>
-<table class="table">
+<table class="w-full border-collapse">
     <thead>
         <tr>
             <th><a asp-action="Index" asp-route-sortOrder="@ViewData["StartDateSortParm"]"
-                    style="text-decoration:underline;">Startdato</a></th>
-            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["EndDateSortParm"]"
-                    style="text-decoration:underline;">Slutdato</a></th>
+                    class="underline">Startdato</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["EndDateSortParm"]" class="underline">Slutdato</a>
+            </th>
             <th>Varighed</th>
             <th>Afdeling</th>
             <th>Start lokation</th>
@@ -73,11 +73,10 @@
     </tbody>
 </table>
 
-
-<div id="req-modal" class="modal">
-    <div class="modal-content">
+<div id="req-modal" class="hidden fixed z-[1] pt-24 left-0 top-0 w-full h-full overflow-auto bg-[rgba(0,0,0,0.4)]">
+    <div class="bg-[#fefefe] m-auto p-6 w-5/6 border border-[#888] border-solid">
         <span class="close" onclick="closeRequestsModal()">&times;</span>
-        <table class="table" id="">
+        <table class="w-full border-collapse">
             <thead>
                 <tr>
                     <th>Navn</th>

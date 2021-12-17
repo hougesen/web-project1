@@ -32,7 +32,21 @@ async function generateRequestModal(routeId) {
 
             const button = document.createElement('button');
             button.appendChild(document.createTextNode('Tildel'));
-            button.classList.add('button');
+            button.classList.add(
+                ...[
+                    'bg-[#00904a]',
+                    'hover:bg-[#00522a]',
+                    'rounded-lg',
+                    'border-none',
+                    'py-2',
+                    'px-4',
+                    'text-white',
+                    'cursor-pointer',
+                    'm-auto',
+                    'block',
+                    'text-base',
+                ],
+            );
             button.addEventListener('click', () => assignUserToRoute(request.routeId, request.userId));
 
             tr.appendChild(button);

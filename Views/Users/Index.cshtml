@@ -8,25 +8,24 @@
 <h1>Chauffører</h1>
 <br>
 <form asp-action="Index" method="get">
-    <div class="form-actions no-color">
+    <div>
         <p>
-            Søg dato: <input type="date" class="searchdate" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Søg" class="btn btn-default" /> |
+            Søg dato: <input type="date" class="outline outline-1 outline-gray-300" name="SearchString"
+                value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Søg" /> |
             <a asp-action="Index">Ryd filtre</a>
         </p>
     </div>
 </form>
 <br>
-<table class="table">
+<table class="w-full border-collapse">
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]"
-                    style="text-decoration:underline;">Ledighed</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" class="underline">Ledighed</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]"
-                    style="text-decoration:underline;">Navn</a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" class="underline">Navn</a>
             </th>
             <th>
                 Telefonnummer
@@ -37,9 +36,7 @@
             <th>
                 Land
             </th>
-            <th>
-
-            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -65,7 +62,8 @@
                 </td>
                 <td>
                     <button asp-route-id="@item.UserId" onclick="switchModal(@item.UserId)" runat="server" text="Button"
-                    OnClientClick="return false;" id="myBtn">
+                    OnClientClick="return false;"
+                    class="bg-[#00904a] hover:bg-[#00522a] rounded-lg border-none py-2 px-4 text-white cursor-pointer m-auto block text-base">
                         Tildel tur
                     </button>
                 </td>
@@ -74,10 +72,11 @@
     </tbody>
 </table>
 
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <table class="table">
+<div id="myModal" class="hidden fixed z-[1] pt-24 left-0 top-0 w-full h-full overflow-auto bg-[rgba(0,0,0,0.4)]">
+    <div class="bg-[#fefefe] m-auto p-6 w-5/6 border border-[#888] border-solid">
+        <span
+            class="close text-3xl text-[#aaa] hover:text-[#000] focus:text-[#000] no-underline cursor-pointer float-right font-bold mt-[-1rem] ">&times;</span>
+        <table class="w-full border-collapse">
             <thead>
                 <tr>
                     <th>
@@ -124,7 +123,10 @@
                             @item.RouteStatus.RouteStatusName
                         </td>
                         <td>
-                            <div><button id="myBtn" onclick="assignRoute(@item.RouteId)">Tildel</button></div>
+                            <div>
+                                <button onclick="assignRoute(@item.RouteId)"
+                                class="bg-[#00904a] hover:bg-[#00522a] rounded-lg border-none py-2 px-4 text-white cursor-pointer m-auto block text-base">Tildel</button>
+                            </div>
                         </td>
                     </tr>
                 }

@@ -2,26 +2,28 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Alex Andersen Ølund</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/211c7f6f1f.js" crossorigin="anonymous"></script>
-    <link href="~/css/site.css" rel="stylesheet" />
-    <link href="~/css/Table.css" rel="stylesheet" />
-    <link href="~/css/sidenav.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - Alex Andersen Ølund</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/211c7f6f1f.js" crossorigin="anonymous"></script>
+  <link href="~/css/site.css" rel="stylesheet" />
+  <link href="~/css/Table.css" rel="stylesheet" />
+  <link href="~/css/sidenav.css" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="page-wrapper">
+  <div class="w-full flex">
     <div class="sidebar">
-        <a href="/dashboard/"><img src="~/images/AAlogo.png" alt="AAO logo" class="aao-logo" /></a>
+      <a href="/dashboard/">
+        <img src="~/images/AAlogo.png" alt="AAO logo" class="h-auto ml-auto mr-auto pt-[6vh]" />
+      </a>
       <h3>Alex Andersen Ølund</h3>
-      <div class="nav-menu">
-        <a href="/dashboard" class="arrow-align-right">
+      <div class="pt-2">
+        <a href="/dashboard" class="flex justify-between">
           <span>
             <i class="fas fa-chart-line"></i>
             Dashboard
@@ -29,7 +31,7 @@
           <span><i class="fas fa-angle-right"></i></span>
         </a>
 
-        <a href="/routes/create" class="arrow-align-right">
+        <a href="/routes/create" class="flex justify-between">
           <span>
             <i class="fas fa-edit"></i>
             Opret tur
@@ -37,7 +39,7 @@
           <span><i class="fas fa-angle-right"></i></span>
         </a>
 
-        <a href="/routes" class="arrow-align-right">
+        <a href="/routes" class="flex justify-between">
           <span>
             <i class="fas fa-route"></i>
             Ture
@@ -45,7 +47,7 @@
           <span><i class="fas fa-angle-right"></i></span>
         </a>
 
-        <a href="/users/" class="arrow-align-right">
+        <a href="/users/" class="flex justify-between">
           <span>
             <i class="fas fa-database"></i>
             Chauffører
@@ -54,18 +56,18 @@
         </a>
       </div>
     </div>
-    <div style="width: 100%">
+
+    <div class="w-full">
       <div id="topnav">
         <div class="dropdown-profile">
           <div id="nav-login" class="dropbtn">Lisbeth Kjær <i class="fa fa-fw fa-user"></i></div>
           <div class="dropdown-content">
             <a href="/">Log ud</a>
-            <a href="#">Hjælp</a>
           </div>
         </div>
       </div>
 
-      <div class="render-body">
+      <div class="pt-[4vw] pl-[4vw] pr-[4vw]">
         <main>@RenderBody()</main>
       </div>
     </div>
