@@ -6,7 +6,7 @@
 
 <script src="~/js/driverRequestModal.js"></script>
 
-<h1>Ture</h1>
+<h1 class="overskrift">Ture</h1>
 <br>
 <form asp-action="Index" method="get">
     <div>
@@ -19,11 +19,11 @@
     </div>
 </form>
 <br>
-<table class="w-full border-collapse">
+
+<table class="w-full border-collapse" id="tabel">
     <thead>
         <tr>
-            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["StartDateSortParm"]"
-                    class="underline">Startdato</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["StartDateSortParm"]" class="underline">Startdato</a></th>
             <th><a asp-action="Index" asp-route-sortOrder="@ViewData["EndDateSortParm"]" class="underline">Slutdato</a>
             </th>
             <th>Varighed</th>
@@ -36,6 +36,7 @@
             <th></th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var item in Model)
         {
@@ -53,9 +54,9 @@
                     {
                         <div class="flex">
                             <button
-                        class="text-base block m-auto text-white border-none cursor-pointer rounded-sm no-underline py-2 px-4 bg-[#00904a]"
+                        class="text-base block m-auto text-white border-none cursor-pointer rounded-sm no-underline py-2 px-4 bg-[#00904a] buttonRoutes" id=´"button"
                         onclick="generateRequestModal(@item.RouteId)">
-                                Tildel tur
+                                Tildel
                             </button>
                         </div>
                     }
@@ -63,12 +64,12 @@
                 <td>
                     <div class="flex">
                         <a asp-action="Edit" asp-route-id="@item.RouteId"
-                        class="text-base block m-auto text-white border-none cursor-pointer rounded-sm no-underline py-2 px-4 bg-[#888]">Rediger</a>
+                        class="text-base block m-auto text-white border-none cursor-pointer rounded-sm no-underline py-2 px-4 bg-[#888] buttonRoutes">Rediger</a>
                     </div>
                 </td>
                 <td>
                     <div class="flex">
-                        <a asp-action="Delete" asp-route-id="@item.RouteId" class="del-btn">Slet</a>
+                        <a asp-action="Delete" asp-route-id="@item.RouteId" class="del-btn buttonRoutes">Slet</a>
                     </div>
                 </td>
             </tr>

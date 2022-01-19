@@ -58,9 +58,6 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-tr:hover {
-    background-color: #a2ad9c;
-}
 
 .close {
     color: #aaa;
@@ -101,7 +98,9 @@ tr:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: white !important;
+    top: 33px;
+    border-radius: 3px;
     min-width: 160px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 20%);
     z-index: 1;

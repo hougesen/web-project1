@@ -1,0 +1,21 @@
+body {
+}
+
+
+div#sidebar\a {
+    height: auto;
+}
+
+#sidebar img {
+    margin: 10px;
+}
+
+img.h-auto.ml-auto.mr-auto.pt-\[6vh\] {
+    width: 200px;
+}
+
+
+.pt-2 a {
+    display: flex !important;
+    justify-content: space-between !important;
+}

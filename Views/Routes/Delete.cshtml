@@ -4,11 +4,15 @@
     ViewData["Title"] = "Slet tur";
 }
 
-<h1>Delete</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+
+
+
+
+<h1 class="delete">Delete</h1>
+
+<h3>Are you sure you want to delete this route?</h3>
 <div>
-    <h4>Route</h4>
     <dl class="w-96">
         <dt class="bg-[#00000014] font-bold rounded-sm py-1 px-3 m-0 mt-3">
             @Html.DisplayNameFor(model => model.RouteDescription)
@@ -70,12 +74,21 @@
         <dd class=" py-1 px-3 m-0 mb-5 rounded-sm">
             @Html.DisplayFor(model => model.RouteStatus.RouteStatusId)
         </dd>
-    </dl>
 
+        
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RouteId" />
+        <input type="submit" value="Delete" id="delete"
+            class="btn cursor-pointer text-white py-0 px-2 rounded-sm bg-[#d9534f]" />  
+<div class="back">
+    <a asp-action="Index">Back to List</a>
+</div>    </form>
+    </dl>
+@*
     <form asp-action="Delete">
         <input type="hidden" asp-for="RouteId" />
         <input type="submit" value="Delete"
             class="btn cursor-pointer text-white py-0 px-2 rounded-sm bg-[#d9534f]" /> |
         <a asp-action="Index">Back to List</a>
-    </form>
+    </form>*@
 </div>

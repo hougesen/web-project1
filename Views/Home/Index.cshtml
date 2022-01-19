@@ -5,6 +5,27 @@
     Layout = "";
 }
 
+<style>
+    .knapperne {
+        display: flex;
+        justify-content: space-between
+    }
+
+    .knapperne .knap1:last-child {
+        background-color: #b4b2b2;
+    }
+
+    .hey label {
+        font-weight: bold;
+    }
+
+    .hey input {
+    padding: 6px 0px;
+}
+
+
+</style>
+
 <link href="~/css/login.css" rel="stylesheet" />
 
 <div class="logo">
@@ -18,15 +39,17 @@
     {
         @Html.ValidationSummary(true)
 
-        <div style="margin: auto; display: flex; justify-content: center; flex-direction: column; width: 20%">
+        <div class="hey" style="margin: auto; display: flex; justify-content: center; flex-direction: column; width: 20%">
             @Html.LabelFor(model => model.UserEmail) @Html.EditorFor(model => model.UserEmail)
             <div style="height: 20px">@Html.ValidationMessageFor(model => model.UserEmail)</div>
 
             @Html.LabelFor(model => model.UserPassword) @Html.EditorFor(model => model.UserPassword)
             <div style="height: 20px">@Html.ValidationMessageFor(model => model.UserPassword)</div>
 
-            <div style="display: flex">
+            <div class="knapperne" style="display: flex">
                 <input class="knap1" type="submit" value="Log ind" />
+                <input class="knap1" type="submit" value="Hjælp" />
+
             </div>
         </div>
     }

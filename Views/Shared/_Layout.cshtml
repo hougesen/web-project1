@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+  <meta colorf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@ViewData["Title"] - Alex Andersen Ølund</title>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,11 +11,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/211c7f6f1f.js" crossorigin="anonymous"></script>
   <link href="~/css/site.css" rel="stylesheet" />
+
+
+  <link href="~/css/routes.css" rel="stylesheet" />
+  <link href="~/css/sidebar.css" rel="stylesheet" />
+  <link href="~/css/chauffoer.css" rel="stylesheet" />
+
 </head>
+
+
+<style>
+
+    #dropdown {
+        background-color: white;
+        border-radius: 3px;
+
+
+
+    }
+</style>
 
 <body>
   <div class="w-full flex">
-    <div class="sidebar w-80 max-w-[35vw] bg-white h-full min-h-screen flex flex-col">
+    <div class="sidebar w-80 max-w-[35vw] bg-white h-full min-h-screen flex flex-col" id="sidebar
+">
       <a href="/dashboard" class="hover:text-[#00904a]">
         <img src="~/images/AAlogo.png" alt="AAO logo" class="h-auto ml-auto mr-auto pt-[6vh]" />
       </a>
@@ -58,10 +77,11 @@
     <div class="w-full">
       <div id="topnav">
         <div class="dropdown-profile relative inline-block">
-          <div id="nav-login" class="border-none text-white text-base">Lisbeth Kjær <i class="fa fa-fw fa-user"></i>
+            @* her skal der være c# kode som viser logged-in user *@
+          <div id="nav-login" class="border-none text-white text-base">outman <i class="fa fa-fw fa-user"></i>
           </div>
-          <div class="dropdown-content">
-            <a href="/" class="text-black hover:text-white py-3 px-4 no-underline block">Log ud</a>
+          <div class="dropdown-content" id="dropdown">
+            <a href="/" class="text-black py-3 px-4 no-underline block">Log ud</a>
           </div>
         </div>
       </div>

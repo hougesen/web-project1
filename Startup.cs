@@ -17,7 +17,8 @@ namespace AAOAdmin
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /* This method gets called by the runtime. Use this method to add services to the container. 
+         der er her vores di container er , altså vores dependency injection */
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AAOContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
